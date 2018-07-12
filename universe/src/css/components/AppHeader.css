@@ -1,46 +1,10 @@
-.page-header {
-    width: 100%;
-    height: 60px;
-    background: #16191b;
-    color: #dfdede;
+.page-header *{
+    font-family: 'Roboto', sans-serif;
 }
 .header-container {
-    width: 100%;
-    height: 100%;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
+    
 }
-.header-left-side-container {
-
-}
-.header-title-container {
-
-}
-.header-title {
-
-}
-.header-logo-container {
-
-}
-.header-logo {
-
-}
-.header-right-side-container {
-    display: flex;
-}
-.header-links-container {
-    display: flex;
-}
-.header-auth-buttons-container {
-    display: flex;
-}
-.header-login-button-container {
-
-}
-.header-login-button {
-
-}
-.header-register-button-container {
-
+.header-title {}
+.header-auth-button:hover {
+    background: #ffffff21 !important;
 }
