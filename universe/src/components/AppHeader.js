@@ -29,35 +29,44 @@ const styles = {
     fontSize: 14
   },
   linksItem : {
-    paddingRight: 20
+
   }
 }
 
 
 class AppHeader extends Component {
   render() {
-    const { classes } = this.props
+    const { root, headerContainer, headerTitle, toolbar, links, linksItem } = this.props.classes
     return (
-      <div className={`${classes.root} page-header`}>
-        <AppBar position="static" className={classes.headerContainer}>
-          <Toolbar className={classes.toolbar}>
-            <Typography variant="title" color="inherit" className={`${classes.headerTitle} header-title`}>
+      <div className={`${root} page-header`}>
+        <AppBar position="static" className={headerContainer}>
+          <Toolbar className={toolbar}>
+            <Typography variant="title" color="inherit" className={`${headerTitle} header-title`}>
               {textConstants.UNIVERSE}
             </Typography>
             <Grid
               container
               justify={'center'}
-              className={classes.links}
-              spacing={10}
+              className={links}
+              spacing={24}
             >
-              <Grid item className={classes.linksItem}>
-                {textConstants.ABOUT_US}
+              <Grid item className={linksItem}>
+                <a className="links-item-content" href="#">
+                  {textConstants.ABOUT_US}
+                  <div className="links-item-underline" />
+                </a>
               </Grid>
-              <Grid item className={classes.linksItem}>
-                {textConstants.PRODUCTS}
+              <Grid item className={linksItem}>
+                <a className="links-item-content" href="#">
+                  {textConstants.PRODUCTS}
+                  <div className="links-item-underline" />
+                </a>
               </Grid>
               <Grid item>
-                {textConstants.CONTACT_US}
+                <a className="links-item-content" href="#">
+                  {textConstants.CONTACT_US}
+                  <div className="links-item-underline" />
+                </a>
               </Grid>
             </Grid>
             <Grid
