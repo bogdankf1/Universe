@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles'
 import { Grid } from '../../node_modules/@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import textConstants from '../constants/textConstants'
+import AboutUsCard from './AboutUsCard';
 
 const styles = {
   mainTitleContainer: {
@@ -18,41 +19,79 @@ const styles = {
   },
   mainTitleText: {
     textTransform: 'uppercase'
+  },
+  aboutSectionContainer: {
+    width: '100%',
+    height: '100%',
+    paddingLeft: 100,
+    paddingRight: 100
   }
 }
 
 class HomePage extends Component {
   render() {
-    const { mainTitleContainer, mainTitle, mainTitleText } = this.props.classes
+    const {
+      mainTitleContainer,
+      mainTitle,
+      mainTitleText,
+      aboutSectionContainer
+    } = this.props.classes
      return (
       <div className="page default-page">
         <AppHeader />
         <div className="home-page-container">
-          <Grid
-            container
-            justify={'center'}
-            alignItems={'center'}
-            className={mainTitleContainer}
-          >
+          <div className="home-page-greeting-section">
             <Grid
-              item
-              className={`${mainTitle}`}
+              container
+              justify={'center'}
+              alignItems={'center'}
+              className={mainTitleContainer}
             >
-              <Typography
-                variant="display3"
-                gutterBottom
-                className={`${mainTitleText} home-page-main-title`}
+              <Grid
+                item
+                className={`${mainTitle}`}
               >
-                {textConstants.UNIVERSE_PROJECT}
-              </Typography>
-              <Typography
-                variant="display1"
-                gutterBottom
-              >
-                {textConstants.PREDICT_PRICE_ON_STOCKS}
-              </Typography>
+                <Typography
+                  variant="display3"
+                  gutterBottom
+                  className={`${mainTitleText} home-page-main-title`}
+                >
+                  {textConstants.UNIVERSE_PROJECT}
+                </Typography>
+                <Typography
+                  variant="display1"
+                  gutterBottom
+                >
+                  {textConstants.PREDICT_PRICE_ON_STOCKS}
+                </Typography>
+              </Grid>
             </Grid>
-          </Grid>
+          </div>
+          <div className="home-page-about-section">
+            <Grid
+              container
+              className={aboutSectionContainer}
+              justify={"center"}
+              alignItems={"center"}
+              spacing={32}
+            >
+              <Grid
+                item
+              >
+                <AboutUsCard />
+              </Grid>
+              <Grid
+                item
+              >
+                <AboutUsCard />
+              </Grid>
+              <Grid
+                item
+              >
+                <AboutUsCard />
+              </Grid>
+            </Grid>
+          </div>
         </div>
       </div>
      ) 
