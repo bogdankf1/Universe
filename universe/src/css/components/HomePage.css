@@ -26,3 +26,12 @@
   width: 100%;
   height: 700px;
 }
+.home-page-products-section {
+  width: 100%;
+  height: 600px;
+  background: #212121;
+}
+.home-page-contact-us-section {
+  width: 100%;
+  height: 400px;
+}

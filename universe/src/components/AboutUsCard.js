@@ -20,7 +20,7 @@ const styles = {
 
 class AboutUsCard extends Component {
   render() {
-    const { classes } = this.props
+    const { classes, cardTitle } = this.props
     return (
       <div>
         <Card className={classes.card}>

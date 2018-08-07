@@ -9,6 +9,8 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import colorTheme from '../utils/colorTheme'
 import Grid from '@material-ui/core/Grid'
+import { Link } from 'react-router-dom'
+import routes from '../constants/routes'
 
 const styles = {
   root: {
@@ -50,6 +52,12 @@ class AppHeader extends Component {
               className={links}
               spacing={24}
             >
+              <Grid item className={linksItem}>
+                <Link className="links-item-content" to={routes.APP} >
+                  {textConstants.APP}
+                  <div className="links-item-underline" />
+                </Link>
+              </Grid>
               <Grid item className={linksItem}>
                 <a className="links-item-content" href="#">
                   {textConstants.ABOUT_US}

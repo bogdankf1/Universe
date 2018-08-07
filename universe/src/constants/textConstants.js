@@ -6,5 +6,6 @@ export default {
   PRODUCTS: 'Products',
   CONTACT_US: 'Contact Us',
   UNIVERSE_PROJECT: 'Universe Project',
-  PREDICT_PRICE_ON_STOCKS: 'Predict price on all stocks easily from anywhere you are'
+  PREDICT_PRICE_ON_STOCKS: 'Predict price on all stocks easily from anywhere you are',
+  APP: 'App'
 }

@@ -6,7 +6,8 @@ import { withStyles } from '@material-ui/core/styles'
 import { Grid } from '../../node_modules/@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import textConstants from '../constants/textConstants'
-import AboutUsCard from './AboutUsCard';
+import AboutUsCard from './AboutUsCard'
+import AppFooter from './AppFooter'
 
 const styles = {
   mainTitleContainer: {
@@ -92,6 +93,13 @@ class HomePage extends Component {
               </Grid>
             </Grid>
           </div>
+          <div className="home-page-products-section">
+
+          </div>
+          <div className="home-page-contact-us-section">
+
+          </div>
+          <AppFooter />
         </div>
       </div>
      ) 
