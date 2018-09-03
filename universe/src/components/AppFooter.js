@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import textConstants from '../constants/textConstants'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 

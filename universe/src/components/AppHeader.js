@@ -44,7 +44,9 @@ class AppHeader extends Component {
         <AppBar position="static" className={headerContainer}>
           <Toolbar className={toolbar}>
             <Typography variant="title" color="inherit" className={`${headerTitle} header-title`}>
-              {textConstants.UNIVERSE}
+              <Link className="links-item-content" to={routes.HOME} > 
+                {textConstants.UNIVERSE}
+              </Link>
             </Typography>
             <Grid
               container
@@ -59,19 +61,19 @@ class AppHeader extends Component {
                 </Link>
               </Grid>
               <Grid item className={linksItem}>
-                <a className="links-item-content" href="#">
+                <a className="links-item-content">
                   {textConstants.ABOUT_US}
                   <div className="links-item-underline" />
                 </a>
               </Grid>
               <Grid item className={linksItem}>
-                <a className="links-item-content" href="#">
+                <a className="links-item-content">
                   {textConstants.PRODUCTS}
                   <div className="links-item-underline" />
                 </a>
               </Grid>
               <Grid item>
-                <a className="links-item-content" href="#">
+                <a className="links-item-content">
                   {textConstants.CONTACT_US}
                   <div className="links-item-underline" />
                 </a>
