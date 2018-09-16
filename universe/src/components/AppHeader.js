@@ -9,6 +9,8 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import colorTheme from '../utils/colorTheme'
 import Grid from '@material-ui/core/Grid'
+import { Link } from 'react-router-dom'
+import routes from '../constants/routes'
 
 const styles = {
   root: {
@@ -42,7 +44,9 @@ class AppHeader extends Component {
         <AppBar position="static" className={headerContainer}>
           <Toolbar className={toolbar}>
             <Typography variant="title" color="inherit" className={`${headerTitle} header-title`}>
-              {textConstants.UNIVERSE}
+              <Link className="links-item-content" to={routes.HOME} > 
+                {textConstants.UNIVERSE}
+              </Link>
             </Typography>
             <Grid
               container
@@ -51,19 +55,25 @@ class AppHeader extends Component {
               spacing={24}
             >
               <Grid item className={linksItem}>
-                <a className="links-item-content" href="#">
+                <Link className="links-item-content" to={routes.APP} >
+                  {textConstants.APP}
+                  <div className="links-item-underline" />
+                </Link>
+              </Grid>
+              <Grid item className={linksItem}>
+                <a className="links-item-content">
                   {textConstants.ABOUT_US}
                   <div className="links-item-underline" />
                 </a>
               </Grid>
               <Grid item className={linksItem}>
-                <a className="links-item-content" href="#">
+                <a className="links-item-content">
                   {textConstants.PRODUCTS}
                   <div className="links-item-underline" />
                 </a>
               </Grid>
               <Grid item>
-                <a className="links-item-content" href="#">
+                <a className="links-item-content">
                   {textConstants.CONTACT_US}
                   <div className="links-item-underline" />
                 </a>
