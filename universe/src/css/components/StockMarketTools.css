@@ -31,3 +31,12 @@
 .tool-card-commodities {
     background: url('../../public/images/tool-6.jpg') no-repeat 0 0;
 }
+
+.primary-stock-button {
+    background: #00000062 !important;
+}
+.primary-stock-button:hover {
+    background: #ffffff79 !important;
+    cursor: pointer;
+    color: #000000cc;
+}

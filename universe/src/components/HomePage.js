@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import AppHeader from './AppHeader'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Grid } from '../../node_modules/@material-ui/core'
@@ -39,7 +38,6 @@ class HomePage extends Component {
     } = this.props.classes
      return (
       <div className="page default-page">
-        <AppHeader />
         <div className="home-page-container">
           <div className="home-page-greeting-section">
             <Grid

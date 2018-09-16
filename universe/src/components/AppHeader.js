@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button'
 import colorTheme from '../utils/colorTheme'
 import Grid from '@material-ui/core/Grid'
 import { Link } from 'react-router-dom'
-import routes from '../constants/routes'
+import { ROUTES } from '../constants/routes'
 
 const styles = {
   root: {
@@ -44,7 +44,7 @@ class AppHeader extends Component {
         <AppBar position="static" className={headerContainer}>
           <Toolbar className={toolbar}>
             <Typography variant="title" color="inherit" className={`${headerTitle} header-title`}>
-              <Link className="links-item-content" to={routes.HOME} > 
+              <Link className="links-item-content" to={ROUTES.HOME} > 
                 {textConstants.UNIVERSE}
               </Link>
             </Typography>
@@ -55,7 +55,7 @@ class AppHeader extends Component {
               spacing={24}
             >
               <Grid item className={linksItem}>
-                <Link className="links-item-content" to={routes.APP} >
+                <Link className="links-item-content" to={ROUTES.APP} >
                   {textConstants.APP}
                   <div className="links-item-underline" />
                 </Link>

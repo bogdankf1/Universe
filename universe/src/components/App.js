@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import HomePage from './HomePage'
-import ROUTES from './../constants/routes'
+import { ROUTES } from './../constants/routes'
 import { Route, Switch } from 'react-router-dom'
 import StocksPrediction from './StocksPrediction'
-import StockMarketTools from './StockMarketTools';
-import AppHeader from './AppHeader';
+import AppHeader from './AppHeader'
+import StockMarketApp from './StockMarketApp'
 
 class App extends Component {
   render() {
@@ -15,7 +15,7 @@ class App extends Component {
         <AppHeader />
         <Switch>
           <Route component={HomePage} path={ROUTES.HOME} />
-          <Route component={StockMarketTools} path={ROUTES.STOCK_MARKET_TOOLS} />
+          <Route component={StockMarketApp} path={ROUTES.STOCK_MARKET_TOOLS} />
           <Route component={StocksPrediction} />
         </Switch>
       </div>

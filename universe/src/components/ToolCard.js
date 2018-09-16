@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import { connect } from 'react-redux'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import textConstants from '../constants/textConstants'
+import { push } from 'react-router-redux'
+import { STOCK_MARKET_TOOLS } from '../constants/ActionTypes';
 
 const styles = {
   toolCard: {
@@ -22,20 +24,22 @@ const styles = {
 
 class ToolCard extends Component {
   handleToolSelect = () => {
-    const { toolType } = this.props
-    console.log(toolType)
+    const { toolType, dispatch } = this.props
+    dispatch({
+      type: STOCK_MARKET_TOOLS.SET_TOOL_NAME,
+      payload: toolType
+    })
+    dispatch(push(`/stock-market-tools/tool/${toolType.toLowerCase()}`))
   }
   render() {
-    const { classes, toolTitle, toolDescription, toolPicture, cardClassName } = this.props
+    const { classes, toolTitle, toolDescription, cardClassName } = this.props
     const { toolCard, media } = classes
     return (
       <Card
         className={toolCard}
-        onClick={this.handleToolSelect}
       >
-        <CardMedia
+        <div
           className={`${media} ${cardClassName}`}
-          image={toolPicture}
           title={toolTitle}
         />
         <CardContent>
@@ -47,7 +51,11 @@ class ToolCard extends Component {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button
+            size="small"
+            color="primary"
+            onClick={this.handleToolSelect}
+          >
             {textConstants.CONTINUE}
           </Button>
         </CardActions>
@@ -60,4 +68,8 @@ ToolCard.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(ToolCard)
+export default withStyles(styles)(connect(
+  state => ({
+    
+  })
+)(ToolCard))
