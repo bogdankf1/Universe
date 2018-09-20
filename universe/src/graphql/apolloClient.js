@@ -1,8 +1,9 @@
 import ApolloClient from 'apollo-boost'
+import { hostname, port, graphqlPath } from '../constants/server'
 
 export const createApolloClient = () => {
   const client = new ApolloClient({
-    uri: "http://192.168.1.132:3001/graphql"
+    uri: `http://${hostname}:${port}/${graphqlPath}`
   })
   return client
 }

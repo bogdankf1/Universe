@@ -7,7 +7,6 @@ import textConstants from '../constants/textConstants'
 import { push } from 'react-router-redux'
 import { ROUTES } from '../constants/routes'
 import theme from '../utils/colorTheme'
-import { STOCK_MARKET_TOOLS } from '../constants/ActionTypes'
 
 const styles = {
   button: {

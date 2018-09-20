@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
 import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
+import { loadStocksList } from '../graphql/queries/stocks'
 
 const styles = {
   toolsContainer: {
@@ -16,35 +16,23 @@ const styles = {
 class StocksMarketTool extends Component {
   render() {
     const { match : { params }, toolName } = this.props
-    console.log(params)
-
+    
     return (
-      <Query
-        query={gql`
-        {
-          stocks(id: "FB") {
-            list
-          }
-        }
-      `}
-      >
-        {({ loading, error, data }) => {
-          if (loading) return <p>Loading...</p>
-          if (error) return <p>Error :(</p>
+      <div>
+        <Typography>
+          {toolName || params.tool}
+        </Typography>
+        <Query query={loadStocksList} variables={{ id: 'MSFT' }}>
+          {({ loading, error, data }) => {
+            if (loading) return <p>Loading...</p>
+            if (error) return <p>Error :(</p>
 
-          console.log(JSON.parse(data.stocks.list))
+            console.log(JSON.parse(data.stocks.list))
 
-          return (
-            <div>
-              <Typography>
-                {toolName}
-              </Typography>
-              {data.stocks.list}
-            </div>
-          )
-        }}
-        {/*  */}
-      </Query>
+            return data.stocks.list
+          }}
+        </Query>
+      </div>
      ) 
   }
 }
