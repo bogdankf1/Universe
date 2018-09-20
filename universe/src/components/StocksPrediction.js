@@ -7,7 +7,6 @@ import textConstants from '../constants/textConstants'
 import { push } from 'react-router-redux'
 import { ROUTES } from '../constants/routes'
 import theme from '../utils/colorTheme'
-import { STOCK_MARKET_TOOLS } from '../constants/ActionTypes'
 
 const styles = {
   button: {
@@ -19,9 +18,9 @@ class StocksPrediction extends Component {
   handleOpenClick = () => {
     const { dispatch } = this.props
     dispatch(push(ROUTES.STOCK_MARKET_TOOLS))
-    dispatch({
-      type: STOCK_MARKET_TOOLS.LOAD_STOCKS_LIST.REQUEST
-    })
+    // dispatch({
+    //   type: STOCK_MARKET_TOOLS.LOAD_STOCKS_LIST.REQUEST
+    // })
   }
   render() {
     const { classes } = this.props
