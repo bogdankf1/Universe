@@ -19,9 +19,9 @@ class StocksPrediction extends Component {
   handleOpenClick = () => {
     const { dispatch } = this.props
     dispatch(push(ROUTES.STOCK_MARKET_TOOLS))
-    dispatch({
-      type: STOCK_MARKET_TOOLS.LOAD_STOCKS_LIST.REQUEST
-    })
+    // dispatch({
+    //   type: STOCK_MARKET_TOOLS.LOAD_STOCKS_LIST.REQUEST
+    // })
   }
   render() {
     const { classes } = this.props
