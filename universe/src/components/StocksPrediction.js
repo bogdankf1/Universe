@@ -10,7 +10,8 @@ import theme from '../utils/colorTheme'
 
 const styles = {
   button: {
-    color: 'white'
+    color: 'white',
+    marginRight: '20px'
   }
 }
 
@@ -18,9 +19,10 @@ class StocksPrediction extends Component {
   handleOpenClick = () => {
     const { dispatch } = this.props
     dispatch(push(ROUTES.STOCK_MARKET_TOOLS))
-    // dispatch({
-    //   type: STOCK_MARKET_TOOLS.LOAD_STOCKS_LIST.REQUEST
-    // })
+  }
+  loadStocksSymbols = () => {
+    const { dispatch } = this.props
+    dispatch(push(ROUTES.STOCKS_SYMBOLS))
   }
   render() {
     const { classes } = this.props
@@ -35,6 +37,14 @@ class StocksPrediction extends Component {
             onClick={this.handleOpenClick}
           >
             {textConstants.OPEN_STOCK_MARKET_TOOLS}
+          </Button>
+          <Button
+            variant="outlined"
+            color={theme.palette.primary.dark}
+            className={`${classes.button} primary-stock-button`}
+            onClick={this.loadStocksSymbols}
+          >
+            {textConstants.LOAD_STOCKS_SYMBOLS}
           </Button>
         </div>
       </div>

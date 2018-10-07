@@ -7,3 +7,18 @@ export const loadStocksList = gql`
     }
   }
 `
+
+export const loadSymbolsList = gql`
+  query SymbolsList {
+    symbols {
+      list {
+      	symbol
+      	isEnabled
+      	name
+        date
+      	type
+      	iexId
+      } 
+    }
+  }
+`

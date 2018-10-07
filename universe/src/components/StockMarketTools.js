@@ -20,9 +20,7 @@ class StocksMarketTools extends Component {
     const { toolsContainer } = classes
     return (
       <div className="stock-market-tools-wrapper">
-        <div className="stock-market-tools-header">
-
-        </div>
+        <div className="stock-market-tools-header"></div>
         <Grid
           container
           className={toolsContainer}
