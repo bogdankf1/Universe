@@ -6,7 +6,6 @@ import { Button } from '../../node_modules/@material-ui/core'
 import textConstants from '../constants/textConstants'
 import { push } from 'react-router-redux'
 import { ROUTES } from '../constants/routes'
-import theme from '../utils/colorTheme'
 
 const styles = {
   button: {
@@ -18,11 +17,11 @@ const styles = {
 class StocksPrediction extends Component {
   handleOpenClick = () => {
     const { dispatch } = this.props
-    dispatch(push(ROUTES.STOCK_MARKET_TOOLS))
+    dispatch(push(ROUTES.TOOLS.BASE_PATH))
   }
   loadStocksSymbols = () => {
     const { dispatch } = this.props
-    dispatch(push(ROUTES.STOCKS_SYMBOLS))
+    dispatch(push(ROUTES.SYMBOLS.STOCKS))
   }
   render() {
     const { classes } = this.props
@@ -32,7 +31,7 @@ class StocksPrediction extends Component {
         <div className="stocks-prediction-page-wrapper">
           <Button
             variant="outlined"
-            color={theme.palette.primary.dark}
+            color={"primary"}
             className={`${classes.button} primary-stock-button`}
             onClick={this.handleOpenClick}
           >
@@ -40,7 +39,7 @@ class StocksPrediction extends Component {
           </Button>
           <Button
             variant="outlined"
-            color={theme.palette.primary.dark}
+            color={"primary"}
             className={`${classes.button} primary-stock-button`}
             onClick={this.loadStocksSymbols}
           >

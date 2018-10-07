@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import { Grid } from '../../node_modules/@material-ui/core'
+import { Grid } from '@material-ui/core'
 import textConstants from '../constants/textConstants'
 import ToolCard from './ToolCard'
 import { TOOLS_TYPES } from '../constants/app'
@@ -14,7 +14,7 @@ const styles = {
   }
 }
 
-class StocksMarketTools extends Component {
+class ToolsBox extends Component {
   render() {
     const { classes } = this.props
     const { toolsContainer } = classes
@@ -42,7 +42,7 @@ class StocksMarketTools extends Component {
   }
 }
 
-StocksMarketTools.propTypes = {
+ToolsBox.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
@@ -50,4 +50,4 @@ export default withStyles(styles)(connect(
   state => ({
     
   })
-)(StocksMarketTools))
+)(ToolsBox))

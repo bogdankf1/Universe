@@ -6,8 +6,8 @@ import { ROUTES } from './../constants/routes'
 import { Route, Switch } from 'react-router-dom'
 import StocksPrediction from './StocksPrediction'
 import AppHeader from './AppHeader'
-import StockMarketApp from './StockMarketApp'
-import StocksSymbolsContainer from './StocksSymbolsContainer'
+import ToolsContainer from './ToolsContainer'
+import SymbolsContainer from './SymbolsContainer'
 
 class App extends Component {
   render() {
@@ -15,9 +15,9 @@ class App extends Component {
       <div className="App">
         <AppHeader />
         <Switch>
-          <Route component={HomePage} path={ROUTES.HOME} />
-          <Route component={StockMarketApp} path={ROUTES.STOCK_MARKET_TOOLS} />
-          <Route component={StocksSymbolsContainer} path={ROUTES.STOCKS_SYMBOLS} />
+          <Route component={HomePage} path={ROUTES.APP.HOME} />
+          <Route component={ToolsContainer} path={ROUTES.TOOLS.BASE_PATH} />
+          <Route component={SymbolsContainer} path={ROUTES.SYMBOLS.STOCKS} />
           <Route component={StocksPrediction} />
         </Switch>
       </div>

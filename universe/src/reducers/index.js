@@ -1,7 +1,9 @@
 import app from './app'
-import stockMarketTools from './stockMarketTools'
+import tools from './tools'
+import symbols from './symbols'
 
 export default {
     app,
-    stockMarketTools
+    tools,
+    symbols
 }

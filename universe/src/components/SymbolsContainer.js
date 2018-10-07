@@ -4,18 +4,18 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Query } from 'react-apollo'
 import { loadSymbolsList } from '../graphql/queries/stocks'
-import { STOCK_MARKET_TOOLS } from '../constants/ActionTypes'
+import { SYMBOLS } from '../constants/ActionTypes'
 
 const styles = {
 
 }
 
-class StocksSymbolsContainer extends Component {
+class SymbolsContainer extends Component {
   handleSymbolsLoading = (data) => {
     const { dispatch } = this.props
     
     dispatch({
-      type: STOCK_MARKET_TOOLS.SAVE_SYMBOLS_LIST,
+      type: SYMBOLS.SAVE_LIST,
       payload: data
     })
     
@@ -43,7 +43,7 @@ class StocksSymbolsContainer extends Component {
   }
 }
 
-StocksSymbolsContainer.propTypes = {
+SymbolsContainer.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
@@ -51,4 +51,4 @@ export default withStyles(styles)(connect(
   state => ({
     
   })
-)(StocksSymbolsContainer))
+)(SymbolsContainer))
