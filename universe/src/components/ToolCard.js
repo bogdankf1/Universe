@@ -9,7 +9,8 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import textConstants from '../constants/textConstants'
 import { push } from 'react-router-redux'
-import { STOCK_MARKET_TOOLS } from '../constants/ActionTypes';
+import { TOOLS } from '../constants/ActionTypes'
+import { ROUTES } from '../constants/routes';
 
 const styles = {
   toolCard: {
@@ -26,10 +27,10 @@ class ToolCard extends Component {
   handleToolSelect = () => {
     const { toolType, dispatch } = this.props
     dispatch({
-      type: STOCK_MARKET_TOOLS.SET_TOOL_NAME,
+      type: TOOLS.SET_TOOL_NAME,
       payload: toolType
     })
-    dispatch(push(`/stock-market-tools/tool/${toolType.toLowerCase()}`))
+    dispatch(push(`${ROUTES.TOOLS.BASE_PATH}/tool/${toolType.toLowerCase()}`))
   }
   render() {
     const { classes, toolTitle, toolDescription, cardClassName } = this.props
