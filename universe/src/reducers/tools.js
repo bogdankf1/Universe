@@ -8,6 +8,8 @@ export default function tools(state = initialState, action) {
       return {...state, toolName: action.payload}
     case TOOLS.SAVE_DEFAULT_STOCKS_NAMES_LIST:
       return {...state, defaultStocks: action.payload}
+    case TOOLS.SET_COMPANY_NAME:
+      return {...state, selectedCompany: action.payload}
     default:
       return state
   }

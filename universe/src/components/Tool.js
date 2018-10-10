@@ -17,18 +17,6 @@ const styles = {
 }
 
 class Tool extends Component {
-  handleLoadedStocksData = (data) => {
-    const { dispatch } = this.props
-    console.log(Object.entries(data))
-    const companiesNames = Object.entries(data).map((item) => {
-      return item[1].quote.companyName
-    })
-    dispatch({
-      type: TOOLS.SAVE_DEFAULT_STOCKS_NAMES_LIST,
-      payload: companiesNames
-    })
-    console.log(companiesNames)
-  }
   render() {
     const { match : { params }, toolName } = this.props
 
