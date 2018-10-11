@@ -8,11 +8,16 @@ import { DEFAULT_LOADED_STOCKS } from '../constants/app'
 import { TOOLS } from '../constants/ActionTypes'
 import CompanyCard from './CompanyCard'
 import { Grid } from '@material-ui/core'
+import StocksChartContainer from './StocksChartContainer'
+import CompanyStocksLoading from './CompanyStocksLoading'
 
 const styles = {
   toolsContainer: {
     width: '100%',
     padding: '20px'
+  },
+  stocksChartContainer: {
+    height: 300
   }
 }
 
@@ -31,8 +36,17 @@ class ToolStocks extends Component {
       payload: companiesList
     })
   }
+  saveCompanyStocksList = (data) => {
+    const { dispatch } = this.props
+
+    dispatch({
+      type: TOOLS.SAVE_SELECTED_COMPANY_STOCKS_LIST,
+      payload: data
+    })
+  }
   render() {
-    const { companiesList, classes, selectedCompany } = this.props
+    const { companiesList, classes } = this.props
+    const { stocksChartContainer } = classes
 
     return (
       <div>
@@ -55,19 +69,9 @@ class ToolStocks extends Component {
             }}
           </Query>
         }
-        <div className="stocks-graph-container">
-          {selectedCompany.companyName ?
-            <div>
-              <Query query={loadStocksList} variables={{ id: selectedCompany.symbol }}>
-                {({ loading, error, data }) => {
-                  if (loading) return <p>{`Loading ${selectedCompany.companyName} stocks data...`}</p>
-                  if (error) return <p>{`Error :(`}</p>
-
-                  return data.stocks.list
-                }}
-              </Query>
-            </div> : null
-          }
+        <div className={stocksChartContainer}>
+          <CompanyStocksLoading />
+          <StocksChartContainer />
         </div>
       </div>
      ) 
@@ -82,6 +86,7 @@ export default withStyles(styles)(connect(
   state => ({
     toolName: state.tools.toolName,
     companiesList: state.tools.defaultStocks || [],
-    selectedCompany: state.tools.selectedCompany || {}
+    selectedCompany: state.tools.selectedCompany || {},
+    selectedCompanyStocks: state.tools.selectedCompanyStocks || {}
   })
 )(ToolStocks))

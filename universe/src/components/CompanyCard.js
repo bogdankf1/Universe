@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Paper, Typography } from '@material-ui/core'
-import { TOOLS } from '../constants/ActionTypes';
+import { TOOLS } from '../constants/ActionTypes'
 
 const styles = {
   toolsContainer: {
@@ -25,7 +25,11 @@ class CompanyCard extends Component {
     const { dispatch, company } = this.props
 
     dispatch({
-      type: TOOLS.SET_COMPANY_NAME,
+      type: TOOLS.CLEAR_SELECTED_COMPANY_STOCKS_LIST
+    })
+
+    dispatch({
+      type: TOOLS.SAVE_SELECTED_COMPANY_NAME,
       payload: company
     })
   }
@@ -51,6 +55,5 @@ CompanyCard.propTypes = {
 
 export default withStyles(styles)(connect(
   state => ({
-
   })
 )(CompanyCard))
