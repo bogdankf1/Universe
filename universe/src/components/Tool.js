@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
-import { TOOLS } from '../constants/ActionTypes'
 import { ROUTES } from '../constants/routes'
 import ToolStocks from './ToolStocks'
 import ToolsIndices from './ToolsIndices';
