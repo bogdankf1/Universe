@@ -7,13 +7,12 @@ import { loadStocksList } from '../graphql/queries/stocks'
 import { DEFAULT_LOADED_STOCKS } from '../constants/app'
 import { TOOLS } from '../constants/ActionTypes'
 import CompanyCard from './CompanyCard'
-import { Grid } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import StocksChartContainer from './StocksChartContainer'
 import CompanyStocksLoading from './CompanyStocksLoading'
 
 const styles = {
-  toolsContainer: {
-    width: '100%',
+  toolsStocksContainer: {
     padding: '20px'
   },
   stocksChartContainer: {
@@ -45,16 +44,16 @@ class ToolStocks extends Component {
     })
   }
   render() {
-    const { companiesList, classes } = this.props
-    const { stocksChartContainer } = classes
+    const { companiesList, classes, selectedCompanyStocks, selectedCompany } = this.props
+    const { stocksChartContainer, toolsStocksContainer } = classes
 
     return (
-      <div>
+      <div className={toolsStocksContainer}>
         {companiesList.length ? 
           <Grid container justify={'center'} alignItems={'center'} spacing={16}>
             {companiesList.map((company, idx) =>
-              <Grid item>
-                <CompanyCard company={company} key={idx} />
+              <Grid item key={idx}>
+                <CompanyCard company={company} />
               </Grid>
             )}
           </Grid> :
@@ -70,8 +69,13 @@ class ToolStocks extends Component {
           </Query>
         }
         <div className={stocksChartContainer}>
+          <Typography variant="display1" component="h3">
+            {selectedCompany.companyName}
+          </Typography>
           <CompanyStocksLoading />
-          <StocksChartContainer />
+          {selectedCompanyStocks.length ?
+            <StocksChartContainer /> : null
+          }
         </div>
       </div>
      ) 
@@ -87,6 +91,6 @@ export default withStyles(styles)(connect(
     toolName: state.tools.toolName,
     companiesList: state.tools.defaultStocks || [],
     selectedCompany: state.tools.selectedCompany || {},
-    selectedCompanyStocks: state.tools.selectedCompanyStocks || {}
+    selectedCompanyStocks: state.tools.selectedCompanyStocks || []
   })
 )(ToolStocks))

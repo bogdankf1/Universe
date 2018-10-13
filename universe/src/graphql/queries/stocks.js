@@ -8,6 +8,28 @@ export const loadStocksList = gql`
   }
 `
 
+export const loadCompanyStocksChart = gql`
+  query StocksChart($id: String) {
+    stocksChart(id: $id) {
+      list {
+        date,
+        open,
+        high,
+        low,
+        close,
+        volume,
+        unadjustedClose,
+        unadjustedVolume,
+        change,
+        changePercent,
+        vwap,
+        label,
+        changeOverTime
+      }
+    }
+  }
+`
+
 export const loadSymbolsList = gql`
   query SymbolsList {
     symbols {

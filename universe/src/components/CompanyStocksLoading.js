@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Query } from 'react-apollo'
-import { loadStocksList } from '../graphql/queries/stocks'
+import { loadStocksList, loadCompanyStocksChart } from '../graphql/queries/stocks'
 import { TOOLS } from '../constants/ActionTypes'
 
 const styles = {
@@ -27,14 +27,14 @@ class CompanyStocksLoading extends Component {
 
     return (
       <div>
-        {selectedCompany.companyName && !Object.keys(selectedCompanyStocks).length ?
+        {selectedCompany.companyName && !selectedCompanyStocks.length ?
           <div>
-            <Query query={loadStocksList} variables={{ id: selectedCompany.symbol }}>
+            <Query query={loadCompanyStocksChart} variables={{ id: selectedCompany.symbol }}>
               {({ loading, error, data }) => {
                 if (loading) return <p>{`Loading ${selectedCompany.companyName} stocks data...`}</p>
                 if (error) return <p>{`Error :(`}</p>
                 
-                this.saveCompanyStocksList(JSON.parse(data.stocks.list))
+                this.saveCompanyStocksList(data.stocksChart.list)
 
                 return `${selectedCompany.companyName} stocks data loaded successfully!`
               }}
@@ -53,6 +53,6 @@ CompanyStocksLoading.propTypes = {
 export default withStyles(styles)(connect(
   state => ({
     selectedCompany: state.tools.selectedCompany || {},
-    selectedCompanyStocks: state.tools.selectedCompanyStocks || {}
+    selectedCompanyStocks: state.tools.selectedCompanyStocks || []
   })
 )(CompanyStocksLoading))
