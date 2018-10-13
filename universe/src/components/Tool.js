@@ -22,7 +22,7 @@ class Tool extends Component {
     return (
       <div>
         <Typography>
-          {toolName || params.tool}
+          {/* {toolName || params.tool} */}
         </Typography>
         <Switch>
           <Route component={ToolStocks} path={ROUTES.TOOLS.STOCKS} />

@@ -40,7 +40,7 @@ class CompanyCard extends Component {
     return (
       <div onClick={this.selectCompany}>
         <Paper elevation={1} className={cardPaper}>
-          <Typography variant="h5" component="h3">
+          <Typography variant="subheading" component="h3">
             {company.companyName}
           </Typography>
         </Paper>
