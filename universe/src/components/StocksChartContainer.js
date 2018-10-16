@@ -31,7 +31,7 @@ class StocksChartContainer extends Component {
           <XAxis dataKey="date"/>
           <YAxis/>
           <Tooltip/>
-          <Area type='linear' dataKey= 'price' stroke='#37DB79' fill='#37DB79'/>
+          <Area type='linear' dataKey= 'price' stroke='#4F5452' fill='#686D6C'/>
         </AreaChart>
       </ResponsiveContainer>
      ) 

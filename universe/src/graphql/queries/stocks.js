@@ -9,8 +9,8 @@ export const loadStocksList = gql`
 `
 
 export const loadCompanyStocksChart = gql`
-  query StocksChart($id: String) {
-    stocksChart(id: $id) {
+  query StocksChart($id: String, $range: String) {
+    stocksChart(id: $id, range: $range) {
       list {
         date,
         open,

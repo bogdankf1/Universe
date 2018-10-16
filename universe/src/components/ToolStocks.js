@@ -4,12 +4,13 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Query } from 'react-apollo'
 import { loadStocksList } from '../graphql/queries/stocks'
-import { DEFAULT_LOADED_STOCKS } from '../constants/app'
+import { DEFAULT_LOADED_STOCKS, DEFAULT_STOCKS_RANGE } from '../constants/app'
 import { TOOLS } from '../constants/ActionTypes'
 import CompanyCard from './CompanyCard'
 import { Grid, Typography } from '@material-ui/core'
 import StocksChartContainer from './StocksChartContainer'
 import CompanyStocksLoading from './CompanyStocksLoading'
+import RangesContainer from './RangesContainer'
 
 const styles = {
   toolsStocksContainer: {
@@ -21,6 +22,14 @@ const styles = {
 }
 
 class ToolStocks extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+
+    dispatch({
+      type: TOOLS.SAVE_CURRENT_RANGE,
+      payload: DEFAULT_STOCKS_RANGE
+    })
+  }
   handleLoadedStocksData = (data) => {
     const { dispatch } = this.props
     const companiesList = Object.entries(data).map(item => {
@@ -68,6 +77,7 @@ class ToolStocks extends Component {
             }}
           </Query>
         }
+        <RangesContainer />
         <div className={stocksChartContainer}>
           <Typography variant="display1" component="h3">
             {selectedCompany.companyName}
