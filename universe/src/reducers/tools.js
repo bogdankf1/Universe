@@ -14,6 +14,8 @@ export default function tools(state = initialState, action) {
       return {...state, selectedCompanyStocks: action.payload}
     case TOOLS.CLEAR_SELECTED_COMPANY_STOCKS_LIST:
       return {...state, selectedCompanyStocks: null}
+    case TOOLS.SAVE_CURRENT_RANGE:
+      return {...state, currentRange: action.payload}
     default:
       return state
   }
