@@ -32,7 +32,7 @@ class ToolCryptoCurrencies extends Component {
 						if (loading) return <p>Loading cryptocurrencies data...</p>
 						if (error) return <p>Error :(</p>
 						
-						this.handleLoadedData(data)
+						this.handleLoadedData(data.cryptoCurrencies.list)
 
 						return 'Cryptocurrencies data loaded successfully!'
 					}}
@@ -48,9 +48,6 @@ ToolCryptoCurrencies.propTypes = {
 
 export default withStyles(styles)(connect(
   state => ({
-    toolName: state.tools.toolName,
-    companiesList: state.tools.defaultStocks || [],
-    selectedCompany: state.tools.selectedCompany || {},
-    selectedCompanyStocks: state.tools.selectedCompanyStocks || []
+
   })
 )(ToolCryptoCurrencies))
