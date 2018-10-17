@@ -16,6 +16,8 @@ export default function tools(state = initialState, action) {
       return {...state, selectedCompanyStocks: null}
     case TOOLS.SAVE_CURRENT_RANGE:
       return {...state, currentRange: action.payload}
+    case TOOLS.SAVE_CRYPTOCURRENCIES_DATA:
+      return {...state, cryptoCurrencies: action.payload}
     default:
       return state
   }
