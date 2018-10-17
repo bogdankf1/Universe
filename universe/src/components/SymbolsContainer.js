@@ -29,7 +29,7 @@ class SymbolsContainer extends Component {
             {({ loading, error, data }) => {
               if (loading) return <p>Symbols loading...</p> //Show preloader in such cases
               if (error) return <p>Error in symbols loading:(</p> //Show error page
-              this.handleSymbolsLoading(data)
+              this.handleSymbolsLoading(data.symbols.list)
 
               return "Stocks Symbols loaded successfully!"
             }}

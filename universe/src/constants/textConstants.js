@@ -16,5 +16,6 @@ export default {
   CRYPTOCURRENCIES: 'Cryptocurrencies',
   CONTINUE: 'Continue',
   OPEN_STOCK_MARKET_TOOLS: 'Open Stock Market Tools',
-  LOAD_STOCKS_SYMBOLS: 'Load Stocks Symbols List'
+  LOAD_STOCKS_SYMBOLS: 'Load Stocks Symbols List',
+  COMING_SOON: 'Coming Soon'
 }
