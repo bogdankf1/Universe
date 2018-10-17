@@ -18,6 +18,6 @@ export const TOOLS_TYPES = [
 
 export const DEFAULT_LOADED_STOCKS = ['AAPL', 'MSFT', 'FB', 'TSLA', 'AMZN']
 
-export const STOCKS_RANGES = ['5y', '2y', '1y', 'ytd', '6m', '3m', '1m', '1d', /*'date',*/ 'dynamic']
+export const STOCKS_RANGES = ['5y', '2y', '1y', 'ytd', '6m', '3m', '1m', '1d', /*'date',*/ /*'dynamic'*/]
 
 export const DEFAULT_STOCKS_RANGE = '1y'

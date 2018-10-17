@@ -44,3 +44,35 @@ export const loadSymbolsList = gql`
     }
   }
 `
+
+export const loadCryptoCurrenciesData = gql`
+  query CryptoCurrenciesData {
+    cryptoCurrencies {
+      list {
+        askPrice,
+        askSize,
+        bidPrice,
+        bidSize,
+        calculationPrice,
+        change,
+        changePercent,
+        close,
+        closeTime,
+        companyName,
+        high,
+        latestPrice,
+        latestSource,
+        latestTime,
+        latestUpdate,
+        latestVolume,
+        low,
+        open,
+        openTime,
+        previousClose,
+        primaryExchange,
+        sector,
+        symbol
+      }
+    }
+  }
+`
