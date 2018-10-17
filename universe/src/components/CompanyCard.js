@@ -6,10 +6,6 @@ import { Paper, Typography } from '@material-ui/core'
 import { TOOLS } from '../constants/ActionTypes'
 
 const styles = {
-  toolsContainer: {
-    width: '100%',
-    padding: '20px'
-  },
   cardPaper: {
     minWidth: 150,
     minHeight: 40,
