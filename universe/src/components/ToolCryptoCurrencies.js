@@ -5,6 +5,9 @@ import { withStyles } from '@material-ui/core/styles'
 import { Query } from 'react-apollo'
 import { loadCryptoCurrenciesData } from '../graphql/queries/stocks'
 import { TOOLS } from '../constants/ActionTypes'
+import Preloader from './Preloader'
+import DefaultError from './DefaultError';
+import textConstants from '../constants/textConstants';
 
 const styles = {
 	cryptoCurrenciesContainer: {
@@ -29,8 +32,8 @@ class ToolCryptoCurrencies extends Component {
       <div className={cryptoCurrenciesContainer}>
 				<Query query={loadCryptoCurrenciesData}>
 					{({ loading, error, data }) => {
-						if (loading) return <p>Loading cryptocurrencies data...</p>
-						if (error) return <p>Error :(</p>
+						if (loading) return <Preloader />
+						if (error) return <DefaultError errorText={textConstants.DATA_LOADING_ERROR} />
 						
 						this.handleLoadedData(data.cryptoCurrencies.list)
 

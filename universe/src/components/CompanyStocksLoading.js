@@ -5,6 +5,9 @@ import { withStyles } from '@material-ui/core/styles'
 import { Query } from 'react-apollo'
 import { loadCompanyStocksChart } from '../graphql/queries/stocks'
 import { TOOLS } from '../constants/ActionTypes'
+import Preloader from './Preloader'
+import DefaultError from './DefaultError'
+import textConstants from '../constants/textConstants'
 
 const styles = {
   toolsContainer: {
@@ -23,7 +26,7 @@ class CompanyStocksLoading extends Component {
     })
   }
   render() {
-    const { selectedCompany, selectedCompanyStocks, currentRange } = this.props
+    const { selectedCompany, currentRange } = this.props
 
     return (
       <div>
@@ -31,8 +34,8 @@ class CompanyStocksLoading extends Component {
           <div>
             <Query query={loadCompanyStocksChart} variables={{ id: selectedCompany.symbol, range: currentRange }}>
               {({ loading, error, data }) => {
-                if (loading) return <p>{`Loading ${selectedCompany.companyName} stocks data...`}</p>
-                if (error) return <p>{`Error :(`}</p>
+                if (loading) return <Preloader />
+                if (error) return <DefaultError errorText={textConstants.DATA_LOADING_ERROR}/>
                 
                 this.saveCompanyStocksList(data.stocksChart.list)
 

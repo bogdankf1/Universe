@@ -5,6 +5,9 @@ import { withStyles } from '@material-ui/core/styles'
 import { Query } from 'react-apollo'
 import { loadSymbolsList } from '../graphql/queries/stocks'
 import { SYMBOLS } from '../constants/ActionTypes'
+import Preloader from './Preloader'
+import DefaultError from './DefaultError';
+import textConstants from '../constants/textConstants';
 
 const styles = {
 
@@ -23,20 +26,17 @@ class SymbolsContainer extends Component {
   }
   render() {
     return (
-      <div className="">
-        <div className="">
+      <div>
+        <div>
           <Query query={loadSymbolsList}>
             {({ loading, error, data }) => {
-              if (loading) return <p>Symbols loading...</p> //Show preloader in such cases
-              if (error) return <p>Error in symbols loading:(</p> //Show error page
+              if (loading) return <Preloader />
+              if (error) return <DefaultError errorText={textConstants.DATA_LOADING_ERROR} />
               this.handleSymbolsLoading(data.symbols.list)
 
               return "Stocks Symbols loaded successfully!"
             }}
           </Query>
-        </div>
-        <div className="">
-
         </div>
       </div>
     )

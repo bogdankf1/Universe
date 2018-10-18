@@ -17,5 +17,6 @@ export default {
   CONTINUE: 'Continue',
   OPEN_STOCK_MARKET_TOOLS: 'Open Stock Market Tools',
   LOAD_STOCKS_SYMBOLS: 'Load Stocks Symbols List',
-  COMING_SOON: 'Coming Soon'
+  COMING_SOON: 'Coming Soon',
+  DATA_LOADING_ERROR: 'Data loading error!'
 }

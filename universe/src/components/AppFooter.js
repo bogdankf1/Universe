@@ -23,6 +23,6 @@ AppFooter.propTypes = {
 
 export default withStyles(styles)(connect(
   state => ({
-    // someProp: state.someReducer.prop
+    
   })
 )(AppFooter))
