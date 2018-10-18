@@ -40,53 +40,26 @@ class HomePage extends Component {
       <div className="page default-page">
         <div className="home-page-container">
           <div className="home-page-greeting-section">
-            <Grid
-              container
-              justify={'center'}
-              alignItems={'center'}
-              className={mainTitleContainer}
-            >
-              <Grid
-                item
-                className={`${mainTitle}`}
-              >
-                <Typography
-                  variant="display3"
-                  gutterBottom
-                  className={`${mainTitleText} home-page-main-title`}
-                >
+            <Grid container justify={'center'} alignItems={'center'} className={mainTitleContainer}>
+              <Grid item className={`${mainTitle}`}>
+                <Typography variant="display3" gutterBottom className={`${mainTitleText} home-page-main-title`}>
                   {textConstants.UNIVERSE_PROJECT}
                 </Typography>
-                <Typography
-                  variant="display1"
-                  gutterBottom
-                >
+                <Typography variant="display1" gutterBottom>
                   {textConstants.PREDICT_PRICE_ON_STOCKS}
                 </Typography>
               </Grid>
             </Grid>
           </div>
           <div className="home-page-about-section">
-            <Grid
-              container
-              className={aboutSectionContainer}
-              justify={"center"}
-              alignItems={"center"}
-              spacing={32}
-            >
-              <Grid
-                item
-              >
+            <Grid container className={aboutSectionContainer} justify={"center"} alignItems={"center"} spacing={32}>
+              <Grid item>
                 <AboutUsCard />
               </Grid>
-              <Grid
-                item
-              >
+              <Grid item>
                 <AboutUsCard />
               </Grid>
-              <Grid
-                item
-              >
+              <Grid item>
                 <AboutUsCard />
               </Grid>
             </Grid>

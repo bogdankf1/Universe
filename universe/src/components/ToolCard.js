@@ -36,13 +36,8 @@ class ToolCard extends Component {
     const { classes, toolTitle, toolDescription, cardClassName } = this.props
     const { toolCard, media } = classes
     return (
-      <Card
-        className={toolCard}
-      >
-        <div
-          className={`${media} ${cardClassName}`}
-          title={toolTitle}
-        />
+      <Card className={toolCard}>
+        <div className={`${media} ${cardClassName}`} title={toolTitle} />
         <CardContent>
           <Typography gutterBottom component="h4">
             {toolTitle}
@@ -52,11 +47,7 @@ class ToolCard extends Component {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button
-            size="small"
-            color="primary"
-            onClick={this.handleToolSelect}
-          >
+          <Button size="small" color="primary" onClick={this.handleToolSelect}>
             {textConstants.CONTINUE}
           </Button>
         </CardActions>

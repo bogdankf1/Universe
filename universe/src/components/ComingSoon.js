@@ -36,6 +36,6 @@ ComingSoon.propTypes = {
 
 export default withStyles(styles)(connect(
   state => ({
-    toolName: state.tools.toolName
+    
   })
 )(ComingSoon))

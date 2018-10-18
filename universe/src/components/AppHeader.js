@@ -48,12 +48,7 @@ class AppHeader extends Component {
                 {textConstants.UNIVERSE}
               </Link>
             </Typography>
-            <Grid
-              container
-              justify={'center'}
-              className={links}
-              spacing={24}
-            >
+            <Grid container justify={'center'} className={links} spacing={24}>
               <Grid item className={linksItem}>
                 <Link className="links-item-content" to={ROUTES.APP.BASE_PATH} >
                   {textConstants.APP}
@@ -79,10 +74,7 @@ class AppHeader extends Component {
                 </a>
               </Grid>
             </Grid>
-            <Grid
-              container
-              justify={'flex-end'}
-            >
+            <Grid container justify={'flex-end'}>
               <Grid item>
                 <Button color="inherit" className="header-auth-button">
                   {textConstants.LOGIN}

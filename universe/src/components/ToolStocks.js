@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import { Query } from 'react-apollo'
-import { loadStocksList } from '../graphql/queries/stocks'
-import { DEFAULT_LOADED_STOCKS, DEFAULT_STOCKS_RANGE } from '../constants/app'
+import { DEFAULT_STOCKS_RANGE } from '../constants/app'
 import { TOOLS } from '../constants/ActionTypes'
-import CompanyCard from './CompanyCard'
-import { Grid, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import StocksChartContainer from './StocksChartContainer'
 import CompanyStocksLoading from './CompanyStocksLoading'
 import RangesContainer from './RangesContainer'
+import CompaniesCardsContainer from './CompaniesCardsContainer';
+import DefaultStocksLoading from './DefaultStocksLoading';
 
 const styles = {
   toolsStocksContainer: {
@@ -30,28 +29,6 @@ class ToolStocks extends Component {
       payload: DEFAULT_STOCKS_RANGE
     })
   }
-  handleLoadedStocksData = (data) => {
-    const { dispatch } = this.props
-    const companiesList = Object.entries(data).map(item => {
-        return {
-          symbol: item[1].quote.symbol,
-          companyName: item[1].quote.companyName
-        }
-      })
-
-    dispatch({
-      type: TOOLS.SAVE_DEFAULT_STOCKS_NAMES_LIST,
-      payload: companiesList
-    })
-  }
-  saveCompanyStocksList = (data) => {
-    const { dispatch } = this.props
-
-    dispatch({
-      type: TOOLS.SAVE_SELECTED_COMPANY_STOCKS_LIST,
-      payload: data
-    })
-  }
   render() {
     const { companiesList, classes, selectedCompanyStocks, selectedCompany } = this.props
     const { stocksChartContainer, toolsStocksContainer } = classes
@@ -59,23 +36,8 @@ class ToolStocks extends Component {
     return (
       <div className={toolsStocksContainer}>
         {companiesList.length ? 
-          <Grid container justify={'center'} alignItems={'center'} spacing={16}>
-            {companiesList.map((company, idx) =>
-              <Grid item key={idx}>
-                <CompanyCard company={company} />
-              </Grid>
-            )}
-          </Grid> :
-          <Query query={loadStocksList} variables={{ id: DEFAULT_LOADED_STOCKS.join(",") }}>
-            {({ loading, error, data }) => {
-              if (loading) return <p>Loading...</p>
-              if (error) return <p>Error :(</p>
-              
-              this.handleLoadedStocksData(JSON.parse(data.stocks.list))
-
-              return 'Stocks data loaded successfully!'
-            }}
-          </Query>
+          <CompaniesCardsContainer /> :
+          <DefaultStocksLoading />
         }
         <RangesContainer />
         <div className={stocksChartContainer}>

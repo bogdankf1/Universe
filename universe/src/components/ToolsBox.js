@@ -21,12 +21,7 @@ class ToolsBox extends Component {
     return (
       <div className="stock-market-tools-wrapper">
         <div className="stock-market-tools-header"></div>
-        <Grid
-          container
-          className={toolsContainer}
-          justify={'center'}
-          spacing={8}
-        >
+        <Grid container className={toolsContainer} justify={'center'} spacing={8}>
           {TOOLS_TYPES.map((toolType, idx) =>
             <Grid item key={idx} >
               <ToolCard
