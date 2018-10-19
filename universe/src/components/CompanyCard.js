@@ -5,16 +5,23 @@ import { withStyles } from '@material-ui/core/styles'
 import { Paper, Typography } from '@material-ui/core'
 import { TOOLS } from '../constants/ActionTypes'
 
-const styles = {
+const styles = theme => ({
   cardPaper: {
-    minWidth: 150,
+    minWidth: 160,
     minHeight: 40,
+    paddingLeft: 10,
+    paddingRight: 10,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    background: theme.palette.primary.light,
+    userSelect: 'none'
+  },
+  companyCardText: {
+    color: theme.palette.secondary.light
   }
-}
+})
 
 class CompanyCard extends Component {
   selectCompany = () => {
@@ -31,12 +38,12 @@ class CompanyCard extends Component {
   }
   render() {
     const { company = {}, classes } = this.props
-    const { cardPaper } = classes
+    const { cardPaper, companyCardText } = classes
 
     return (
       <div onClick={this.selectCompany}>
         <Paper elevation={1} className={cardPaper}>
-          <Typography variant="subheading" component="h3">
+          <Typography variant="subheading" component="h3" className={companyCardText}>
             {company.companyName}
           </Typography>
         </Paper>

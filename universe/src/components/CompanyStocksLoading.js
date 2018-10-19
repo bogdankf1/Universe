@@ -39,7 +39,7 @@ class CompanyStocksLoading extends Component {
                 
                 this.saveCompanyStocksList(data.stocksChart.list)
 
-                return `${selectedCompany.companyName} stocks data loaded successfully!`
+                return true
               }}
             </Query>
           </div> : null

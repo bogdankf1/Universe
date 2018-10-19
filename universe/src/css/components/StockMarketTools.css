@@ -32,15 +32,6 @@
     background: url('../../public/images/tool-6.jpg') no-repeat 0 0;
 }
 
-.primary-stock-button {
-    background: #00000062 !important;
-}
-.primary-stock-button:hover {
-    background: #ffffff79 !important;
-    cursor: pointer;
-    color: #000000cc;
-}
-
 .coming-soon-screen {
     width: 100%;
     height: calc(100vh - 64px);

@@ -27,11 +27,11 @@ class StocksChartContainer extends Component {
     return (
       <ResponsiveContainer>
         <AreaChart data={stocksChartData} margin={{top: 10, right: 30, left: 0, bottom: 0}}>
-          <CartesianGrid strokeDasharray="3 3"/>
+          <CartesianGrid strokeDasharray="1 1"/>
           <XAxis dataKey="date"/>
           <YAxis/>
           <Tooltip/>
-          <Area type='linear' dataKey= 'price' stroke='#4F5452' fill='#686D6C'/>
+          <Area type='linear' dataKey='price' stroke='#4F5452' fill='#0B5484'/>
         </AreaChart>
       </ResponsiveContainer>
      ) 

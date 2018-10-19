@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { CircularProgress, Grid } from '@material-ui/core'
 
-const styles = {
+const styles = theme => ({
   progress: {
-    margin: 10
+    margin: 10,
+    color: theme.palette.secondary.light
   }
-}
+})
 
 class Preloader extends Component {
   render() {
