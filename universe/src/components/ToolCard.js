@@ -10,18 +10,26 @@ import Typography from '@material-ui/core/Typography'
 import textConstants from '../constants/textConstants'
 import { push } from 'react-router-redux'
 import { TOOLS } from '../constants/ActionTypes'
-import { ROUTES } from '../constants/routes';
+import { ROUTES } from '../constants/routes'
 
-const styles = {
+const styles = theme => ({
   toolCard: {
-    width: '200px',
-    height: '250px'
+    width: 200,
+    height: 250,
+    background: theme.palette.secondary.main,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: theme.palette.secondary.dark
   },
   media: {
     height: 0,
-    paddingTop: '150px'
+    paddingTop: 150,
+    boxShadow: '0 0 10px rgba(0,0,0,0.5)'
   },
-}
+  toolCardTitle: {
+    color: theme.palette.secondary.light
+  }
+})
 
 class ToolCard extends Component {
   handleToolSelect = () => {
@@ -34,12 +42,13 @@ class ToolCard extends Component {
   }
   render() {
     const { classes, toolTitle, toolDescription, cardClassName } = this.props
-    const { toolCard, media } = classes
+    const { toolCard, media, toolCardTitle } = classes
+
     return (
       <Card className={toolCard}>
         <div className={`${media} ${cardClassName}`} title={toolTitle} />
         <CardContent>
-          <Typography gutterBottom component="h4">
+          <Typography gutterBottom component="h4" className={toolCardTitle}>
             {toolTitle}
           </Typography>
           <Typography component="p">
@@ -47,7 +56,7 @@ class ToolCard extends Component {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary" onClick={this.handleToolSelect}>
+          <Button variant="contained" size="small" onClick={this.handleToolSelect}>
             {textConstants.CONTINUE}
           </Button>
         </CardActions>

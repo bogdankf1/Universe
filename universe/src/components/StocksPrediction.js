@@ -7,12 +7,13 @@ import textConstants from '../constants/textConstants'
 import { push } from 'react-router-redux'
 import { ROUTES } from '../constants/routes'
 
-const styles = {
+const styles = theme => ({
   button: {
-    color: 'white',
-    marginRight: '20px'
+    color: theme.palette.secondary.light,
+    marginRight: 20,
+    background: theme.palette.primary.light
   }
-}
+})
 
 class StocksPrediction extends Component {
   handleOpenClick = () => {

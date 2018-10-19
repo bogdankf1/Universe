@@ -8,8 +8,12 @@ import ToolCard from './ToolCard'
 import { TOOLS_TYPES } from '../constants/app'
 
 const styles = {
+  toolsWrapper: {
+    height: 'calc(100vh - 60px)'
+  },
   toolsContainer: {
     width: '100%',
+    height: '100%',
     padding: '20px'
   }
 }
@@ -17,11 +21,11 @@ const styles = {
 class ToolsBox extends Component {
   render() {
     const { classes } = this.props
-    const { toolsContainer } = classes
+    const { toolsWrapper, toolsContainer } = classes
     return (
-      <div className="stock-market-tools-wrapper">
+      <div className={toolsWrapper}>
         <div className="stock-market-tools-header"></div>
-        <Grid container className={toolsContainer} justify={'center'} spacing={8}>
+        <Grid container className={toolsContainer} justify={'center'} alignItems={'center'} spacing={8}>
           {TOOLS_TYPES.map((toolType, idx) =>
             <Grid item key={idx} >
               <ToolCard

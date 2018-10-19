@@ -9,9 +9,11 @@ import Preloader from './Preloader'
 import DefaultError from './DefaultError';
 import textConstants from '../constants/textConstants';
 
-const styles = {
-
-}
+const styles = theme => ({
+  symbolsContainer: {
+    height: 'calc(100vh - 64px)'
+  }
+})
 
 class SymbolsContainer extends Component {
   handleSymbolsLoading = (data) => {
@@ -25,19 +27,20 @@ class SymbolsContainer extends Component {
     console.log(data)
   }
   render() {
-    return (
-      <div>
-        <div>
-          <Query query={loadSymbolsList}>
-            {({ loading, error, data }) => {
-              if (loading) return <Preloader />
-              if (error) return <DefaultError errorText={textConstants.DATA_LOADING_ERROR} />
-              this.handleSymbolsLoading(data.symbols.list)
+    const { classes } = this.props
+    const { symbolsContainer } = classes
 
-              return "Stocks Symbols loaded successfully!"
-            }}
-          </Query>
-        </div>
+    return (
+      <div className={symbolsContainer}>
+        <Query query={loadSymbolsList}>
+          {({ loading, error, data }) => {
+            if (loading) return <Preloader />
+            if (error) return <DefaultError errorText={textConstants.DATA_LOADING_ERROR} />
+            this.handleSymbolsLoading(data.symbols.list)
+
+            return "Stocks Symbols loaded successfully!"
+          }}
+        </Query>
       </div>
     )
   }

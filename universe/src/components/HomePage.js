@@ -8,7 +8,7 @@ import textConstants from '../constants/textConstants'
 import AboutUsCard from './AboutUsCard'
 import AppFooter from './AppFooter'
 
-const styles = {
+const styles = theme => ({
   mainTitleContainer: {
     width: '100%',
     height: '100%',
@@ -18,7 +18,8 @@ const styles = {
     zIndex: '10'
   },
   mainTitleText: {
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    color: theme.palette.primary.darkText
   },
   aboutSectionContainer: {
     width: '100%',
@@ -26,7 +27,7 @@ const styles = {
     paddingLeft: 100,
     paddingRight: 100
   }
-}
+})
 
 class HomePage extends Component {
   render() {
@@ -41,8 +42,8 @@ class HomePage extends Component {
         <div className="home-page-container">
           <div className="home-page-greeting-section">
             <Grid container justify={'center'} alignItems={'center'} className={mainTitleContainer}>
-              <Grid item className={`${mainTitle}`}>
-                <Typography variant="display3" gutterBottom className={`${mainTitleText} home-page-main-title`}>
+              <Grid item className={mainTitle}>
+                <Typography variant="display3" gutterBottom className={mainTitleText}>
                   {textConstants.UNIVERSE_PROJECT}
                 </Typography>
                 <Typography variant="display1" gutterBottom>

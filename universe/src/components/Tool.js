@@ -10,13 +10,17 @@ import ComingSoon from './ComingSoon'
 import ToolCryptoCurrencies from './ToolCryptoCurrencies'
 
 const styles = {
-  
+  toolContainer: {
+    height: 'calc(100vh - 64px)'
+  }
 }
 
 class Tool extends Component {
   render() {
+    const { classes } = this.props
+    const { toolContainer } = classes
     return (
-      <div>
+      <div className={toolContainer}>
         <Switch>
           <Route component={ToolStocks} path={ROUTES.TOOLS.STOCKS} />
           <Route component={ComingSoon} path={ROUTES.TOOLS.INDICES} />
