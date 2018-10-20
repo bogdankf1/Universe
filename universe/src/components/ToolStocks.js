@@ -8,8 +8,10 @@ import { Typography } from '@material-ui/core'
 import StocksChartContainer from './StocksChartContainer'
 import CompanyStocksLoading from './CompanyStocksLoading'
 import RangesContainer from './RangesContainer'
-import CompaniesCardsContainer from './CompaniesCardsContainer';
-import DefaultStocksLoading from './DefaultStocksLoading';
+import CompaniesCardsContainer from './CompaniesCardsContainer'
+import DefaultStocksLoading from './DefaultStocksLoading'
+import AutoCompleteInput from './AutoCompleteInput'
+import SymbolsLoading from './SymbolsLoading'
 
 const styles = theme => ({
   toolsStocksContainer: {
@@ -38,6 +40,8 @@ class ToolStocks extends Component {
 
     return (
       <div className={toolsStocksContainer}>
+        <SymbolsLoading />
+        <AutoCompleteInput />
         {companiesList.length ? 
           <CompaniesCardsContainer /> :
           <DefaultStocksLoading />
