@@ -19,5 +19,11 @@ export default {
   LOAD_STOCKS_SYMBOLS: 'Load Stocks Symbols List',
   COMING_SOON: 'Coming Soon',
   DATA_LOADING_ERROR: 'Data loading error!',
-  SEARCH_COMPANY: 'Search a company'
+  SEARCH_COMPANY: 'Search a company',
+  PREDICT_STOCKS_PRICE: 'Predict stocks price',
+  TRAINING_DAYS: 'Training days',
+  EPOCHS: 'Epochs',
+  SELECT_PREDICTION_SETTINGS: 'Select prediction settings',
+  STOCKS_PRICE_PREDICTION: 'Stocks Price Prediction',
+  PREDICTED_STOCK_PRICE: 'Predicted Stock Price:'
 }
