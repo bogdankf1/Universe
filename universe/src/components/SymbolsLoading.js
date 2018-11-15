@@ -21,12 +21,8 @@ class SymbolsLoading extends Component {
       type: SYMBOLS.SAVE_LIST,
       payload: data
     })
-    
-    console.log(data)
   }
   render() {
-    const { classes } = this.props
-
     return (
 			<Query query={loadSymbolsList}>
 				{({ loading, error, data }) => {

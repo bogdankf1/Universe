@@ -10,7 +10,7 @@ import ToolCryptoCurrencies from './ToolCryptoCurrencies'
 
 const styles = {
   toolContainer: {
-    height: 'calc(100vh - 64px)'
+    // height: 'calc(100vh - 64px)'
   }
 }
 

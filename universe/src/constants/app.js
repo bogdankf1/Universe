@@ -21,3 +21,7 @@ export const DEFAULT_LOADED_STOCKS = ['AAPL', 'MSFT', 'FB', 'TSLA', 'AMZN']
 export const STOCKS_RANGES = ['5y', '2y', '1y', 'ytd', '6m', '3m', '1m', '1d', /*'date',*/ /*'dynamic'*/]
 
 export const DEFAULT_STOCKS_RANGE = '1y'
+
+export const PREDICTION_TRAINING_DAYS = [10, 20, 50, 100]
+
+export const EPOCHS_AMOUNTS = [128, 256, 512, 1024, 2048, 4096]

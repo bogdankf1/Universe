@@ -12,6 +12,7 @@ import CompaniesCardsContainer from './CompaniesCardsContainer'
 import DefaultStocksLoading from './DefaultStocksLoading'
 import AutoCompleteInput from './AutoCompleteInput'
 import SymbolsLoading from './SymbolsLoading'
+import PredictPriceContainer from './PredictPriceContainer'
 
 const styles = theme => ({
   toolsStocksContainer: {
@@ -56,6 +57,9 @@ class ToolStocks extends Component {
             <StocksChartContainer /> : null
           }
         </div>
+        {selectedCompanyStocks.length ?
+          <PredictPriceContainer /> : null
+        }
       </div>
      ) 
   }
