@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { PREDICTION_TRAINING_DAYS, EPOCHS_AMOUNTS } from '../constants/app'
 import { Grid, FormControl, InputLabel, MenuItem, Select } from '@material-ui/core'
-import textConstants from '../constants/textConstants';
+import textConstants from '../constants/textConstants'
 
 const styles = theme => ({
 	formControl: {

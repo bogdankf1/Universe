@@ -7,8 +7,8 @@ import textConstants from '../constants/textConstants'
 import * as tf from '@tensorflow/tfjs'
 import Preloader from './Preloader'
 import { PREDICTION_TRAINING_DAYS, EPOCHS_AMOUNTS } from '../constants/app'
-import PredictionTrainingDaysSelect from './PredictionTrainingDaysSelect';
-import { PREDICTION } from '../constants/ActionTypes';
+import PredictionTrainingDaysSelect from './PredictionTrainingDaysSelect'
+import { PREDICTION } from '../constants/ActionTypes'
 
 const styles = (theme) => ({
 	button: {
@@ -16,15 +16,23 @@ const styles = (theme) => ({
 		backgroundColor: theme.palette.primary.main,
 	},
 	mainContainer: {
-		marginTop: 50,
+		maxWidth: 500,
+    margin: '120px auto 0',
 		borderRadius: 30,
 		background: theme.palette.secondary.main,
-		minHeight: 150
+    minHeight: 150,
+    paddingTop: 10,
+    paddingBottom: 10
 	},
 	heading: {
-		marginTop: 10,
 		marginBottom: 10
-	}
+  },
+  predictionSettingsItem: {
+    marginTop: 20
+  },
+  predictedPriceSection: {
+    marginTop: 10
+  }
 })
 
 class PredictPriceContainer extends Component {
@@ -61,7 +69,10 @@ class PredictPriceContainer extends Component {
 		const initialData = this.preparePredictionInitialData()
 		const predictionDate = this.getPredictionDate()
 
-		this.trainNeuralNetwork(initialData)
+    if (!this.tfinterface) {
+		  this.trainNeuralNetwork(initialData)
+    }
+
 		this.makePrediction(predictionDate)
 	}
 	showPredictionMenu = () => {
@@ -136,7 +147,9 @@ class PredictPriceContainer extends Component {
 		dispatch({
 			type: PREDICTION.SAVE_TRAINING_DAYS_AMOUNT,
 			payload: daysAmount
-		})
+    })
+    
+    this.tfinterface = null
 	}
 	handleEpochsSelect = (epochs) => {
 		const { dispatch } = this.props
@@ -144,11 +157,13 @@ class PredictPriceContainer extends Component {
 		dispatch({
 			type: PREDICTION.SAVE_EPOCHS_AMOUNT,
 			payload: epochs
-		})
+    })
+    
+    this.tfinterface = null
 	}
   render() {
 		const { classes, predictedPrice } = this.props
-		const { button, mainContainer, heading } = classes
+		const { button, mainContainer, heading, predictionSettingsItem, predictedPriceSection } = classes
 		const { isSettingsButtonClicked, showPreloader } = this.state
 
     return (
@@ -172,29 +187,25 @@ class PredictPriceContainer extends Component {
 						</Button>
 					</Grid>
 				</Grid>
-				{isSettingsButtonClicked &&
-					<Grid container justify={'center'} alignItems={'center'} spacing={16}>
-							<Grid item>
-								<PredictionTrainingDaysSelect
-									handleTrainingDaysSelect={this.handleTrainingDaysSelect}
-									handleEpochsSelect={this.handleEpochsSelect}
-								/>
-							</Grid>
-					</Grid>
-				}
-				{isSettingsButtonClicked &&
-					<Grid container justify={'center'} alignItems={'center'} spacing={16}>
-						<Grid item>
-							<Button
-								variant="outlined"
-								color={"primary"}
-								className={`${button} primary-stock-button`}
-								onClick={this.handlePredictButtonClick}
-							>
-								{textConstants.PREDICT_STOCKS_PRICE}
-							</Button>
-						</Grid>
-					</Grid>
+        {isSettingsButtonClicked &&
+          <Grid container justify={'center'} alignItems={'center'} direction={'column'}>
+            <Grid item className={predictionSettingsItem}>
+              <PredictionTrainingDaysSelect
+                handleTrainingDaysSelect={this.handleTrainingDaysSelect}
+                handleEpochsSelect={this.handleEpochsSelect}
+              />
+            </Grid>
+            <Grid item className={predictionSettingsItem}>
+              <Button
+                variant="outlined"
+                color={"primary"}
+                className={`${button} primary-stock-button`}
+                onClick={this.handlePredictButtonClick}
+              >
+                {textConstants.PREDICT_STOCKS_PRICE}
+              </Button>
+            </Grid>
+          </Grid>
 				}
 				{showPreloader &&
 					<Grid container justify={'center'} alignItems={'center'} spacing={16}>
@@ -204,7 +215,7 @@ class PredictPriceContainer extends Component {
 					</Grid>
 				}
 				{predictedPrice ?
-					<Grid container justify={'center'} alignItems={'center'} spacing={8} className={heading}>
+					<Grid container justify={'center'} alignItems={'center'} spacing={8} className={predictedPriceSection}>
 						<Grid item>
 							<Typography variant="title" component="h3">
 								{textConstants.PREDICTED_STOCK_PRICE}
