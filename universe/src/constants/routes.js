@@ -1,6 +1,8 @@
 export const APP = {
   BASE_PATH: '/',
-  HOME: '/home'
+  HOME: '/home',
+  LOGIN: '/login',
+  REGISTER: '/register'
 }
 
 export const TOOLS_BASE_PATH = `${APP.BASE_PATH}tools`

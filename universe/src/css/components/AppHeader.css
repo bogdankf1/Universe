@@ -1,12 +1,6 @@
 .page-header *{
   font-family: 'Roboto', sans-serif;
 }
-.header-container {
-}
-.header-title {}
-.header-auth-button:hover {
-  background: #ffffff21 !important;
-}
 .links-item-content {
   position: relative;
   user-select: none;

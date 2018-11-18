@@ -13,9 +13,6 @@ import { Link } from 'react-router-dom'
 import { ROUTES } from '../constants/routes'
 
 const styles = {
-  root: {
-
-  },
   headerContainer: {
     backgroundColor: colorTheme.palette.primary.main,
     color: colorTheme.palette.secondary.light
@@ -30,17 +27,19 @@ const styles = {
     paddingLeft: 50,
     fontSize: 14
   },
-  linksItem : {
-
+  headerAuthBtn: {
+    background: '#ffffff21'
   }
 }
 
 
 class AppHeader extends Component {
   render() {
-    const { root, headerContainer, headerTitle, toolbar, links, linksItem } = this.props.classes
+    const { classes } = this.props
+    const { headerContainer, headerTitle, toolbar, links, linksItem, headerAuthBtn } = classes
+
     return (
-      <div className={`${root} page-header`}>
+      <div className={`page-header`}>
         <AppBar position="static" className={headerContainer}>
           <Toolbar className={toolbar}>
             <Typography variant="title" color="inherit" className={`${headerTitle} header-title`}>
@@ -48,14 +47,14 @@ class AppHeader extends Component {
                 {textConstants.UNIVERSE}
               </Link>
             </Typography>
-            <Grid container justify={'center'} className={links} spacing={24}>
+            <Grid container justify={'flex-start'} className={links} spacing={24}>
               <Grid item className={linksItem}>
                 <Link className="links-item-content" to={ROUTES.APP.BASE_PATH} >
                   {textConstants.APP}
                   <div className="links-item-underline" />
                 </Link>
               </Grid>
-              <Grid item className={linksItem}>
+              {/* <Grid item className={linksItem}>
                 <a className="links-item-content">
                   {textConstants.ABOUT_US}
                   <div className="links-item-underline" />
@@ -72,17 +71,21 @@ class AppHeader extends Component {
                   {textConstants.CONTACT_US}
                   <div className="links-item-underline" />
                 </a>
-              </Grid>
+              </Grid> */}
             </Grid>
-            <Grid container justify={'flex-end'}>
+            <Grid container justify={'flex-end'} spacing={8}>
               <Grid item>
-                <Button color="inherit" className="header-auth-button">
-                  {textConstants.LOGIN}
+                <Button color="inherit" className={headerAuthBtn}>
+                  <Link className="links-item-content" to={ROUTES.APP.LOGIN} > 
+                    {textConstants.LOGIN}
+                  </Link>
                 </Button>
               </Grid>
               <Grid item>
-                <Button color="inherit" className="header-auth-button">
-                  {textConstants.REGISTER}
+                <Button color="inherit" className={headerAuthBtn}>
+                  <Link className="links-item-content" to={ROUTES.APP.REGISTER} > 
+                    {textConstants.REGISTER}
+                  </Link>
                 </Button>
               </Grid>
             </Grid>
@@ -99,6 +102,6 @@ AppHeader.propTypes = {
 
 export default withStyles(styles)(connect(
   state => ({
-    // someProp: state.someReducer.prop
+
   })
 )(AppHeader))
