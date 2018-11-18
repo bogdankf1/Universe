@@ -28,5 +28,12 @@ export default {
   PREDICTED_STOCK_PRICE: 'Predicted Stock Price:',
   COMPANY_STOCKS_WILL_RISE: 'Company stocks will rise!',
   COMPANY_STOCKS_WILL_FALL: 'Company stocks will fall!',
-  RAISING_DIFFERENCE: 'Raising difference:'
+  RAISING_DIFFERENCE: 'Raising difference:',
+  LOGIN: 'Login',
+  USERNAME_OR_EMAIL: 'Username or email',
+  EMAIL_PLACEHOLDER: 'username@mailaddress.com',
+  PASSWORD: 'Password',
+  PASSWORD_PLACEHOLDER: '********',
+  REMEMBER_ME: 'Remember me',
+  REGISTRATION: 'Registration'
 }

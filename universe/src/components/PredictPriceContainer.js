@@ -9,8 +9,8 @@ import Preloader from './Preloader'
 import { PREDICTION_TRAINING_DAYS, EPOCHS_AMOUNTS } from '../constants/app'
 import PredictionTrainingDaysSelect from './PredictionTrainingDaysSelect'
 import { PREDICTION } from '../constants/ActionTypes'
-import PredictedPriceSection from './PredictedPriceSection';
-import PredictedPriceAnalysis from './PredictedPriceAnalysis';
+import PredictedPriceSection from './PredictedPriceSection'
+import PredictedPriceAnalysis from './PredictedPriceAnalysis'
 
 const styles = (theme) => ({
 	button: {
@@ -162,7 +162,7 @@ class PredictPriceContainer extends Component {
 	}
   render() {
 		const { classes, predictedPrice } = this.props
-		const { button, mainContainer, heading, predictionSettingsItem, predictedPriceSection } = classes
+		const { button, mainContainer, heading, predictionSettingsItem } = classes
 		const { isSettingsButtonClicked, showPreloader } = this.state
 
     return (

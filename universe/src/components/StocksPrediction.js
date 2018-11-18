@@ -38,14 +38,14 @@ class StocksPrediction extends Component {
           >
             {textConstants.OPEN_STOCK_MARKET_TOOLS}
           </Button>
-          <Button
+          {/* <Button
             variant="outlined"
             color={"primary"}
             className={`${classes.button} primary-stock-button`}
             onClick={this.loadStocksSymbols}
           >
             {textConstants.LOAD_STOCKS_SYMBOLS}
-          </Button>
+          </Button> */}
         </div>
       </div>
      ) 

@@ -2,13 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import { Grid, Button, Typography } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import textConstants from '../constants/textConstants'
-import * as tf from '@tensorflow/tfjs'
-import Preloader from './Preloader'
-import { PREDICTION_TRAINING_DAYS, EPOCHS_AMOUNTS } from '../constants/app'
-import PredictionTrainingDaysSelect from './PredictionTrainingDaysSelect'
-import { PREDICTION } from '../constants/ActionTypes'
 
 const styles = (theme) => ({
 	button: {
@@ -30,7 +25,7 @@ class PredictedPriceAnalysis extends Component {
     return predictedPrice - selectedCompanyStocks[selectedCompanyStocks.length - 1].close
   }
   render() {
-		const { classes, predictedPrice } = this.props
+		const { classes } = this.props
     const { greenRaisingTitle, redRaisingTitle } = classes
     const raisingDifference = this.getPriceRaisingDifference()
 
