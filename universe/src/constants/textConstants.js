@@ -25,5 +25,8 @@ export default {
   EPOCHS: 'Epochs',
   SELECT_PREDICTION_SETTINGS: 'Select prediction settings',
   STOCKS_PRICE_PREDICTION: 'Stocks Price Prediction',
-  PREDICTED_STOCK_PRICE: 'Predicted Stock Price:'
+  PREDICTED_STOCK_PRICE: 'Predicted Stock Price:',
+  COMPANY_STOCKS_WILL_RISE: 'Company stocks will rise!',
+  COMPANY_STOCKS_WILL_FALL: 'Company stocks will fall!',
+  RAISING_DIFFERENCE: 'Raising difference:'
 }

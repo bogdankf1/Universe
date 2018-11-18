@@ -9,6 +9,8 @@ import Preloader from './Preloader'
 import { PREDICTION_TRAINING_DAYS, EPOCHS_AMOUNTS } from '../constants/app'
 import PredictionTrainingDaysSelect from './PredictionTrainingDaysSelect'
 import { PREDICTION } from '../constants/ActionTypes'
+import PredictedPriceSection from './PredictedPriceSection';
+import PredictedPriceAnalysis from './PredictedPriceAnalysis';
 
 const styles = (theme) => ({
 	button: {
@@ -29,9 +31,6 @@ const styles = (theme) => ({
   },
   predictionSettingsItem: {
     marginTop: 20
-  },
-  predictedPriceSection: {
-    marginTop: 10
   }
 })
 
@@ -215,16 +214,12 @@ class PredictPriceContainer extends Component {
 					</Grid>
 				}
 				{predictedPrice ?
-					<Grid container justify={'center'} alignItems={'center'} spacing={8} className={predictedPriceSection}>
+					<Grid container justify={'center'} alignItems={'center'} direction={'column'}>
 						<Grid item>
-							<Typography variant="title" component="h3">
-								{textConstants.PREDICTED_STOCK_PRICE}
-							</Typography>
+							<PredictedPriceSection />
 						</Grid>
-						<Grid item>
-							<Typography variant="subheading" component="h3">
-								{predictedPrice}
-							</Typography>
+						<Grid item className={predictionSettingsItem}>
+							<PredictedPriceAnalysis />
 						</Grid>
 					</Grid> : null
 				}
