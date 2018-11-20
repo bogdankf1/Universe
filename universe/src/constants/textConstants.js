@@ -29,11 +29,18 @@ export default {
   COMPANY_STOCKS_WILL_RISE: 'Company stocks will rise!',
   COMPANY_STOCKS_WILL_FALL: 'Company stocks will fall!',
   RAISING_DIFFERENCE: 'Raising difference:',
-  LOGIN: 'Login',
   USERNAME_OR_EMAIL: 'Username or email',
   EMAIL_PLACEHOLDER: 'username@mailaddress.com',
   PASSWORD: 'Password',
   PASSWORD_PLACEHOLDER: '********',
   REMEMBER_ME: 'Remember me',
-  REGISTRATION: 'Registration'
+  REGISTRATION: 'Registration',
+  FIRSTNAME: 'Firstname',
+  FIRSTNAME_PLACEHOLDER: 'John',
+  LASTNAME: 'Lastname',
+  LASTNAME_PLACEHOLDER: 'Smith',
+  EMAIL: 'Email',
+  PASSWORD: 'Password',
+  CONFIRM_PASSWORD: 'Confirm password',
+  ACCEPT_OUR_POLICY: 'Accept with our privacy policy'
 }

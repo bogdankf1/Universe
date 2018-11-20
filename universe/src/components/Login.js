@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Grid, Button, Typography, TextField, InputAdornment, FormControlLabel, Checkbox } from '@material-ui/core'
 import { AccountCircle, Https } from '@material-ui/icons'
-import { ROUTES } from '../constants/routes'
 
 const styles = theme => ({
   pageContainer: {
@@ -50,22 +49,16 @@ class Login extends Component {
       rememberMe: !rememberMe
     })
   }
-  handleUsernameChange = (e) => {
+  handleFieldChange = (e) => {
     this.setState({
-      username: e.target.value
-    })
-  }
-  handlePasswordChange = (e) => {
-    this.setState({
-      password: e.target.value
+      [e.target.name]: e.target.value
     })
   }
   render() {
     const { classes } = this.props
-    const { username, password, rememberMe } = this.state
+    const { rememberMe } = this.state
     const { pageContainer, loginFormWrapper, loginFormContainer, loginForm, textField, button } = classes
 
-    console.log(username, password, rememberMe)
     return (
       <div className={pageContainer}>
         <Grid container className={loginFormWrapper} justify={'center'} alignItems={'center'}>
@@ -80,8 +73,10 @@ class Login extends Component {
                 <TextField
                   required
                   id="username"
+                  name="username"
                   label={textConstants.USERNAME_OR_EMAIL}
-                  onChange={this.handleUsernameChange}
+                  onChange={this.handleFieldChange}
+                  placeholder={textConstants.EMAIL_PLACEHOLDER}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -95,9 +90,11 @@ class Login extends Component {
                 <TextField
                   required
                   id="password"
+                  name="password"
                   type="password"
                   label={textConstants.PASSWORD}
-                  onChange={this.handlePasswordChange}
+                  onChange={this.handleFieldChange}
+                  placeholder={textConstants.PASSWORD_PLACEHOLDER}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
