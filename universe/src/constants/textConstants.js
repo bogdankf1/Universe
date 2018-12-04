@@ -40,7 +40,8 @@ export default {
   LASTNAME: 'Lastname',
   LASTNAME_PLACEHOLDER: 'Smith',
   EMAIL: 'Email',
-  PASSWORD: 'Password',
   CONFIRM_PASSWORD: 'Confirm password',
-  ACCEPT_OUR_POLICY: 'Accept with our privacy policy'
+  ACCEPT_OUR_POLICY: 'Accept with our privacy policy',
+  STOCK_MARKET: 'Stock Market',
+  NEWS: 'News'
 }

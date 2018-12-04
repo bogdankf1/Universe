@@ -10,6 +10,7 @@ import ToolsContainer from './ToolsContainer'
 import SymbolsContainer from './SymbolsContainer'
 import Login from './Login'
 import Registration from './Registration'
+import News from './News'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
       <div className="App">
         <AppHeader />
         <Switch>
+          <Route component={News} path={ROUTES.APP.NEWS} />
           <Route component={Login} path={ROUTES.APP.LOGIN} />
           <Route component={Registration} path={ROUTES.APP.REGISTER} />
           <Route component={HomePage} path={ROUTES.APP.HOME} />

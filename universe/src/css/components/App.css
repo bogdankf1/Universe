@@ -3,3 +3,6 @@
     height: 100%;
     background: #2B2C2F
 }
+.main-news-image {
+    background-image: url('../../public/images/main-news-bg.jpeg');
+}
