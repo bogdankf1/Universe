@@ -1,11 +1,11 @@
-import app from './app'
 import tools from './tools'
 import symbols from './symbols'
 import prediction from './prediction'
+import news from './news'
 
 export default {
-    app,
-    tools,
-    symbols,
-    prediction
+  tools,
+  symbols,
+  prediction,
+  news
 }

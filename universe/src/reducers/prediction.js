@@ -7,7 +7,7 @@ const initialState = {
 }
 
 export default function prediction(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case PREDICTION.SAVE_TRAINING_DAYS_AMOUNT:
       return {...state, trainingDays: action.payload}
     case PREDICTION.SAVE_EPOCHS_AMOUNT:

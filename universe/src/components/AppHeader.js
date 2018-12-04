@@ -50,28 +50,16 @@ class AppHeader extends Component {
             <Grid container justify={'flex-start'} className={links} spacing={24}>
               <Grid item className={linksItem}>
                 <Link className="links-item-content" to={ROUTES.APP.BASE_PATH} >
-                  {textConstants.APP}
+                  {textConstants.STOCK_MARKET}
                   <div className="links-item-underline" />
                 </Link>
               </Grid>
-              {/* <Grid item className={linksItem}>
-                <a className="links-item-content">
-                  {textConstants.ABOUT_US}
-                  <div className="links-item-underline" />
-                </a>
-              </Grid>
               <Grid item className={linksItem}>
-                <a className="links-item-content">
-                  {textConstants.PRODUCTS}
+                <Link className="links-item-content" to={ROUTES.APP.NEWS} >
+                  {textConstants.NEWS}
                   <div className="links-item-underline" />
-                </a>
+                </Link>
               </Grid>
-              <Grid item>
-                <a className="links-item-content">
-                  {textConstants.CONTACT_US}
-                  <div className="links-item-underline" />
-                </a>
-              </Grid> */}
             </Grid>
             <Grid container justify={'flex-end'} spacing={8}>
               <Grid item>

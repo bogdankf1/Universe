@@ -1,9 +1,16 @@
 import { TOOLS } from '../constants/ActionTypes'
 
-const initialState = {}
+const initialState = {
+  toolName: '',
+  defaultStocks: {},
+  selectedCompany: {},
+  selectedCompanyStocks: [],
+  currentRange: '',
+  cryptoCurrencies: []
+}
 
 export default function tools(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case TOOLS.SET_TOOL_NAME:
       return {...state, toolName: action.payload}
     case TOOLS.SAVE_DEFAULT_STOCKS_NAMES_LIST:

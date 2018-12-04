@@ -2,7 +2,8 @@ export const APP = {
   BASE_PATH: '/',
   HOME: '/home',
   LOGIN: '/login',
-  REGISTER: '/register'
+  REGISTER: '/register',
+  NEWS: '/news'
 }
 
 export const TOOLS_BASE_PATH = `${APP.BASE_PATH}tools`
