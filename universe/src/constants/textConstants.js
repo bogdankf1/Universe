@@ -43,5 +43,6 @@ export default {
   CONFIRM_PASSWORD: 'Confirm password',
   ACCEPT_OUR_POLICY: 'Accept with our privacy policy',
   STOCK_MARKET: 'Stock Market',
-  NEWS: 'News'
+  NEWS: 'News',
+  COMPANIES_NEWS: 'Companies News'
 }
