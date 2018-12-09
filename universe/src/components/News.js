@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import MarketNewsSection from './MarketNewsSection'
 import MarketNewsLoading from './MarketNewsLoading'
+import CompanyNewsSection from './CompanyNewsSection'
 
 const styles = theme => ({
   pageContainer: {
@@ -24,6 +25,7 @@ class News extends Component {
         {marketNewsList.length ?
           <MarketNewsSection newsList={marketNewsList} /> : null
         }
+        <CompanyNewsSection />
       </div>
     )
   }

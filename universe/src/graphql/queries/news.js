@@ -18,8 +18,8 @@ export const loadNewsList = gql`
 
 export const loadCompanyNewsList = gql`
   query CompanyNewsList($id: String) {
-    news {
-      list(id: $id) {
+    companyNews(id: $id) {
+      list {
         datetime,
         headline,
         image,
