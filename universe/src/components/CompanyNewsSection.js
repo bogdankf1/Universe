@@ -8,17 +8,22 @@ import CompanyNewsDefaultSelection from './CompanyNewsDefaultSelection'
 import textConstants from '../constants/textConstants'
 import CompanyNewsLoading from './CompanyNewsLoading';
 import CompanyNewsContainer from './CompanyNewsContainer';
+import AutoCompleteInput from './AutoCompleteInput';
+import SymbolsLoading from './SymbolsLoading';
 
 const styles = theme => ({
-  CompanyNewsSection: {
+  companyNewsSection: {
     maxWidth: 750,
     background: theme.palette.secondary.main,
     borderRadius: 30,
     margin: '0 auto',
     marginTop: 20
   },
-  companyNewsItemWrapper: {
-
+  autoCompleteWrapper: {
+    maxWidth: 600,
+    width: '100%',
+    paddingLeft: 20,
+    paddingRight: 20
   }
 })
 
@@ -26,22 +31,28 @@ const styles = theme => ({
 class CompanyNewsSection extends Component {
   render() {
     const { classes } = this.props
-    const { CompanyNewsSection, companyNewsItemWrapper } = classes
+    const { companyNewsSection, autoCompleteWrapper } = classes
 
     return (
-      <Grid container className={CompanyNewsSection} justify={'center'} alignItems={'center'} direction={'column'}>
-        <Grid item className={companyNewsItemWrapper}>
+      <Grid container className={companyNewsSection} justify={'center'} alignItems={'center'} direction={'column'}>
+        <Grid item>
           <Typography variant="display1">
             {textConstants.COMPANIES_NEWS}          
           </Typography>
         </Grid>
-        <Grid item className={companyNewsItemWrapper}>
+        <Grid item>
+          <SymbolsLoading />
+        </Grid>
+        <Grid item className={autoCompleteWrapper}>
+          <AutoCompleteInput newsLoading={true} />
+        </Grid>
+        <Grid item>
           <CompanyNewsDefaultSelection />
         </Grid>
-        <Grid item className={companyNewsItemWrapper}>
+        <Grid item>
           <CompanyNewsLoading />
         </Grid>
-        <Grid item className={companyNewsItemWrapper}>
+        <Grid item>
           <CompanyNewsContainer />
         </Grid>
       </Grid>

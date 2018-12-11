@@ -7,30 +7,25 @@ import { connect } from 'react-redux'
 import CompanyNewsDefaultSelection from './CompanyNewsDefaultSelection'
 import textConstants from '../constants/textConstants'
 import NewsItem from './NewsItem';
+import { DEFAULT_LOADED_STOCKS } from '../constants/app';
 
 const styles = theme => ({
-  CompanyNewsSection: {
-    maxWidth: 750,
-    background: theme.palette.secondary.main,
-    borderRadius: 30,
-    margin: '0 auto',
-    marginTop: 20
-  },
-  companyNewsItemWrapper: {
-
+  companySymbolHeadline: {
+    marginLeft: 50,
+    marginBottom: 25
   }
 })
 
 
 class CompanyNewsContainer extends Component {
   render() {
-    const { classes, companyNewsList, selectedCompanySymbol } = this.props
-    const { CompanyNewsSection, companyNewsItemWrapper } = classes
+    const { classes, companyNewsList, selectedCompanySymbol = DEFAULT_LOADED_STOCKS[0] } = this.props
+    const { companySymbolHeadline } = classes
 
     return (
       <Grid container justify={'center'} direction={'column'}>
         <Grid item>
-          <Typography variant="headline">
+          <Typography variant="display1" className={companySymbolHeadline}>
             {selectedCompanySymbol}
           </Typography>
         </Grid>
@@ -55,6 +50,6 @@ CompanyNewsContainer.propTypes = {
 export default withStyles(styles)(connect(
   state => ({
     companyNewsList: state.news.companyNewsList,
-    companySymbol: state.news.companySymbol
+    selectedCompanySymbol: state.news.selectedCompanySymbol
   })
 )(CompanyNewsContainer))

@@ -7,7 +7,7 @@ import { TextField, Paper, MenuItem } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 import textConstants from '../constants/textConstants'
-import { TOOLS } from '../constants/ActionTypes'
+import { TOOLS, NEWS } from '../constants/ActionTypes'
 
 const styles = theme => ({
   root: {
@@ -86,16 +86,27 @@ class AutoCompleteInput extends Component {
     })
   }
   handleSelect = (name) => {
-    const { dispatch } = this.props
+    const { dispatch, newsLoading } = this.props
 
-    dispatch({
-      type: TOOLS.CLEAR_SELECTED_COMPANY_STOCKS_LIST
-    })
-
-    dispatch({
-      type: TOOLS.SAVE_SELECTED_COMPANY_NAME,
-      payload: name
-    })
+    if (newsLoading) {
+      dispatch({
+        type: NEWS.CLEAR_COMPANY_NEWS_LIST
+      })
+      
+      dispatch({
+        type: NEWS.SAVE_COMPANY_SYMBOL,
+        payload: name.symbol
+      })
+    } else {
+      dispatch({
+        type: TOOLS.CLEAR_SELECTED_COMPANY_STOCKS_LIST
+      })
+  
+      dispatch({
+        type: TOOLS.SAVE_SELECTED_COMPANY_NAME,
+        payload: name
+      })
+    }
   }
   renderInputComponent = inputProps => {
     const { classes, inputRef = () => {}, ref, ...other } = inputProps

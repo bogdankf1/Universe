@@ -21,14 +21,14 @@ const styles = theme => ({
 class CompanyNewsSelectionCard extends Component {
   selectCompanySymbol = () => {
     const { dispatch, selectedCompanySymbol } = this.props
-
+    
+    dispatch({
+      type: NEWS.CLEAR_COMPANY_NEWS_LIST
+    })
+    
     dispatch({
       type: NEWS.SAVE_COMPANY_SYMBOL,
       payload: selectedCompanySymbol
-    })
-
-    dispatch({
-      type: NEWS.CLEAR_COMPANY_NEWS_LIST
     })
   }
   render() {
