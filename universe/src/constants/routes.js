@@ -3,7 +3,8 @@ export const APP = {
   HOME: '/home',
   LOGIN: '/login',
   REGISTER: '/register',
-  NEWS: '/news'
+  NEWS: '/news',
+  IPO_CALENDAR: '/ipo-calendar'
 }
 
 export const TOOLS_BASE_PATH = `${APP.BASE_PATH}tools`
