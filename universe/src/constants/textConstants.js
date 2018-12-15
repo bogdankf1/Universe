@@ -44,5 +44,14 @@ export default {
   ACCEPT_OUR_POLICY: 'Accept with our privacy policy',
   STOCK_MARKET: 'Stock Market',
   NEWS: 'News',
-  COMPANIES_NEWS: 'Companies News'
+  COMPANIES_NEWS: 'Companies News',
+  IPO_CALENDAR: 'IPO Calendar',
+  TODAY_IPOS: 'Today IPOs',
+  UPCOMING_IPOS: 'Upcoming IPOs',
+  COMPANY: 'Company',
+  SYMBOL: 'Symbol',
+  MARKET: 'Market',
+  PRICE: 'Price',
+  AMOUNT: 'Amount',
+  EXPECTED: 'Expected'
 }

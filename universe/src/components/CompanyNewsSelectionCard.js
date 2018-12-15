@@ -39,7 +39,7 @@ class CompanyNewsSelectionCard extends Component {
       <Paper className={paperContainer} elevation={1} onClick={this.selectCompanySymbol}>
         <Grid container justify={'center'} alignItems={'center'} className={paperInner}>
           <Grid item>
-            <Typography variant="h5" component="h3">
+            <Typography variant="subheading" component="h3">
               {selectedCompanySymbol}
             </Typography>
           </Grid>

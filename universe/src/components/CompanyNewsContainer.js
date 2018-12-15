@@ -2,12 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Grid, Typography } from '@material-ui/core'
-import { NEWS } from '../constants/ActionTypes'
 import { connect } from 'react-redux'
-import CompanyNewsDefaultSelection from './CompanyNewsDefaultSelection'
-import textConstants from '../constants/textConstants'
-import NewsItem from './NewsItem';
-import { DEFAULT_LOADED_STOCKS } from '../constants/app';
+import NewsItem from './NewsItem'
+import { DEFAULT_LOADED_STOCKS } from '../constants/app'
 
 const styles = theme => ({
   companySymbolHeadline: {

@@ -60,6 +60,12 @@ class AppHeader extends Component {
                   <div className="links-item-underline" />
                 </Link>
               </Grid>
+              <Grid item className={linksItem}>
+                <Link className="links-item-content" to={ROUTES.APP.IPO_CALENDAR} >
+                  {textConstants.IPO_CALENDAR}
+                  <div className="links-item-underline" />
+                </Link>
+              </Grid>
             </Grid>
             <Grid container justify={'flex-end'} spacing={8}>
               <Grid item>
