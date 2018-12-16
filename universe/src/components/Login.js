@@ -54,6 +54,16 @@ class Login extends Component {
       [e.target.name]: e.target.value
     })
   }
+  handleLoginBtnClick = () => {
+    const { username, password } = this.state
+    const { login } = this.props
+
+    if (!username || !password) {
+      return false
+    }
+
+    login(username, password)
+  }
   render() {
     const { classes } = this.props
     const { rememberMe } = this.state
@@ -122,7 +132,7 @@ class Login extends Component {
                   variant="outlined"
                   color="primary"
                   className={button}
-                  onClick={this.handleOpenClick}
+                  onClick={this.handleLoginBtnClick}
                 >
                   {textConstants.LOGIN}
                 </Button>

@@ -62,6 +62,13 @@ class Registration extends Component {
       [e.target.name]: e.target.value
     })
   }
+  handleRegisterBtnClick= () => {
+    const { firstname, lastname, username, password, confirmedPassword, acceptPolicy } = this.state
+
+    if (!firstname || !lastname || !username || !password || !confirmedPassword || !acceptPolicy) {
+      return false
+    }
+  }
   render() {
     const { classes } = this.props
     const { acceptPolicy } = this.state
