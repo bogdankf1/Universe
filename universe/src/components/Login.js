@@ -61,8 +61,13 @@ class Login extends Component {
     if (!username || !password) {
       return false
     }
-
-    login(username, password)
+    
+    login({
+      variables: {
+        username,
+        password
+      }
+    })
   }
   render() {
     const { classes } = this.props
