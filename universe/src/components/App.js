@@ -11,7 +11,7 @@ import SymbolsContainer from './SymbolsContainer'
 import Registration from './Registration'
 import News from './News'
 import IPOCalendar from './IPOCalendar'
-import LoginPage from './LoginPage'
+import Login from './Login'
 
 class App extends Component {
   render() {
@@ -21,7 +21,7 @@ class App extends Component {
         <Switch>
           <Route component={IPOCalendar} path={ROUTES.APP.IPO_CALENDAR} />
           <Route component={News} path={ROUTES.APP.NEWS} />
-          <Route component={LoginPage} path={ROUTES.APP.LOGIN} />
+          <Route component={Login} path={ROUTES.APP.LOGIN} />
           <Route component={Registration} path={ROUTES.APP.REGISTER} />
           <Route component={HomePage} path={ROUTES.APP.HOME} />
           <Route component={ToolsContainer} path={ROUTES.TOOLS.BASE_PATH} />

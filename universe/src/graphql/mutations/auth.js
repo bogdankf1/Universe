@@ -11,3 +11,13 @@ export const LOGIN_USER = gql`
     }
   }
 `
+
+export const REGISTER_USER = gql`
+  mutation ($firstname: String!, $lastname: String!, $username: String!, $password: String!) {
+    register(firstname: $firstname, lastname: $lastname, username: $username, password: $password) {
+      data {
+        username
+      }
+    }
+  }
+`

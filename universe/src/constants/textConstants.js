@@ -53,5 +53,9 @@ export default {
   MARKET: 'Market',
   PRICE: 'Price',
   AMOUNT: 'Amount',
-  EXPECTED: 'Expected'
+  EXPECTED: 'Expected',
+  INVALID_USERNAME_OR_PASSWORD: 'Invalid username or password!',
+  WELCOME: 'Welcome, ',
+  LOGOUT: 'Logout',
+  USERNAME_IS_ALREADY_USED: 'Username is already used'
 }
