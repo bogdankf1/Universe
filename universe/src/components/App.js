@@ -8,10 +8,10 @@ import StocksPrediction from './StocksPrediction'
 import AppHeader from './AppHeader'
 import ToolsContainer from './ToolsContainer'
 import SymbolsContainer from './SymbolsContainer'
-import Login from './Login'
 import Registration from './Registration'
 import News from './News'
 import IPOCalendar from './IPOCalendar'
+import Login from './Login'
 
 class App extends Component {
   render() {

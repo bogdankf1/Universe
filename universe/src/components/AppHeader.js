@@ -11,6 +11,7 @@ import colorTheme from '../utils/colorTheme'
 import Grid from '@material-ui/core/Grid'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../constants/routes'
+import { AUTH } from '../constants/ActionTypes';
 
 const styles = {
   headerContainer: {
@@ -29,58 +30,80 @@ const styles = {
   },
   headerAuthBtn: {
     background: '#ffffff21'
+  },
+  greetingMessage: {
+    color: '#ffffff'
   }
 }
 
 
 class AppHeader extends Component {
+  logout = () => {
+    const { dispatch } = this.props
+
+    dispatch({
+      type: AUTH.LOGOUT
+    })
+
+    localStorage.removeItem('user')
+  }
   render() {
-    const { classes } = this.props
-    const { headerContainer, headerTitle, toolbar, links, linksItem, headerAuthBtn } = classes
+    const { classes, isLoggedIn, user } = this.props
+    const { headerContainer,  toolbar, links, headerAuthBtn, greetingMessage } = classes
 
     return (
       <div className={`page-header`}>
         <AppBar position="static" className={headerContainer}>
           <Toolbar className={toolbar}>
-            <Typography variant="title" color="inherit" className={`${headerTitle} header-title`}>
+            <Typography variant="title" color="inherit" className={`header-title`}>
               <Link className="links-item-content" to={ROUTES.APP.HOME} > 
                 {textConstants.UNIVERSE}
               </Link>
             </Typography>
             <Grid container justify={'flex-start'} className={links} spacing={24}>
-              <Grid item className={linksItem}>
+              <Grid item>
                 <Link className="links-item-content" to={ROUTES.APP.BASE_PATH} >
                   {textConstants.STOCK_MARKET}
                   <div className="links-item-underline" />
                 </Link>
               </Grid>
-              <Grid item className={linksItem}>
+              <Grid item>
                 <Link className="links-item-content" to={ROUTES.APP.NEWS} >
                   {textConstants.NEWS}
                   <div className="links-item-underline" />
                 </Link>
               </Grid>
-              <Grid item className={linksItem}>
+              <Grid item>
                 <Link className="links-item-content" to={ROUTES.APP.IPO_CALENDAR} >
                   {textConstants.IPO_CALENDAR}
                   <div className="links-item-underline" />
                 </Link>
               </Grid>
             </Grid>
-            <Grid container justify={'flex-end'} spacing={8}>
+            <Grid container justify={'flex-end'} alignItems={'center'} spacing={8}>
               <Grid item>
-                <Button color="inherit" className={headerAuthBtn}>
+                {!isLoggedIn ?
                   <Link className="links-item-content" to={ROUTES.APP.LOGIN} > 
-                    {textConstants.LOGIN}
-                  </Link>
-                </Button>
+                    <Button color="inherit" className={headerAuthBtn}>
+                      {textConstants.LOGIN}
+                    </Button>
+                  </Link> :
+                  <Typography variant="subheading" className={greetingMessage}>
+                    {`${textConstants.WELCOME}${user.username}!`}
+                  </Typography>
+                }
               </Grid>
               <Grid item>
-                <Button color="inherit" className={headerAuthBtn}>
+                {!isLoggedIn ?
                   <Link className="links-item-content" to={ROUTES.APP.REGISTER} > 
-                    {textConstants.REGISTER}
-                  </Link>
-                </Button>
+                    <Button color="inherit" className={headerAuthBtn}>
+                      {textConstants.REGISTER}
+                    </Button>
+                  </Link> :
+                  <Button color="inherit" className={headerAuthBtn} onClick={this.logout}>
+                    {textConstants.LOGOUT}
+                  </Button>
+                }
               </Grid>
             </Grid>
           </Toolbar>
@@ -96,6 +119,7 @@ AppHeader.propTypes = {
 
 export default withStyles(styles)(connect(
   state => ({
-
+    isLoggedIn: state.auth.isLoggedIn,
+    user: state.auth.user
   })
 )(AppHeader))

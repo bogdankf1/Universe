@@ -3,8 +3,16 @@ import { connect } from 'react-redux'
 import textConstants from '../constants/textConstants'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import { Grid, Button, Typography, TextField, InputAdornment, FormControlLabel, Checkbox } from '@material-ui/core'
+import { Grid, Typography, TextField, InputAdornment, FormControlLabel, Checkbox } from '@material-ui/core'
 import { AccountCircle, Https, Email } from '@material-ui/icons'
+import { Mutation, ApolloConsumer } from 'react-apollo'
+import { REGISTER_USER } from '../graphql/mutations/auth'
+import Preloader from './Preloader'
+import DefaultError from './DefaultError'
+import AuthButton from './AuthButton'
+import { AUTH } from '../constants/ActionTypes'
+import { push } from 'react-router-redux'
+import { ROUTES } from '../constants/routes'
 
 const styles = theme => ({
   pageContainer: {
@@ -34,6 +42,10 @@ const styles = theme => ({
   },
   fullWidthField: {
     width: 300
+  },
+  errorMessage: {
+    color: '#D50000',
+    marginTop: 10
   }
 })
 
@@ -62,8 +74,37 @@ class Registration extends Component {
       [e.target.name]: e.target.value
     })
   }
+  handleRegisterBtnClick= (register) => {
+    const { firstname, lastname, username, password, confirmedPassword, acceptPolicy } = this.state
+
+    if (!firstname || !lastname || !username || !password || !confirmedPassword || !acceptPolicy) {
+      return false
+    }
+
+    register({
+      variables: {
+        firstname,
+        lastname,
+        username,
+        password
+      }
+    })
+  }
+  handleSuccessfulRegistration = (user) => {
+    const { dispatch } = this.props
+
+    dispatch(push(ROUTES.TOOLS.BASE_PATH))
+  }
+  setRegisterErrorMessage = () => {
+    const { dispatch } = this.props
+
+    dispatch({
+      type: AUTH.SET_REGISTER_ERROR_MESSAGE,
+      payload: textConstants.USERNAME_IS_ALREADY_USED
+    })
+  }
   render() {
-    const { classes } = this.props
+    const { classes, registerError } = this.props
     const { acceptPolicy } = this.state
     const {
       pageContainer,
@@ -71,8 +112,8 @@ class Registration extends Component {
       registerFormContainer,
       registerForm,
       textField,
-      button,
-      fullWidthField
+      fullWidthField,
+      errorMessage
     } = classes
 
     return (
@@ -177,6 +218,13 @@ class Registration extends Component {
                   }}
                 />
               </Grid>
+              {registerError ?
+                <Grid item>
+                  <Typography variant="subheading" className={errorMessage}>
+                    {registerError}
+                  </Typography>
+                </Grid> : null
+              }
               <Grid item>
                 <FormControlLabel
                   control={
@@ -191,14 +239,31 @@ class Registration extends Component {
                 />
               </Grid>
               <Grid item>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  className={button}
-                  onClick={this.handleOpenClick}
-                >
-                  {textConstants.REGISTER}
-                </Button>
+                <ApolloConsumer>
+                  {client => (
+                    <Mutation
+                      mutation={REGISTER_USER}
+                      onCompleted={({ register }) => {
+                        if (register.data) {
+                          this.handleSuccessfulRegistration(register.data)
+                        } else {
+                          this.setRegisterErrorMessage()
+                        }
+                      }}
+                    >
+                      {(register, { loading, error }) => {
+                        if (loading) return <Preloader />
+                        if (error) return <DefaultError />
+
+                        return <AuthButton
+                          mutationAction={register}
+                          handleButtonClick={this.handleRegisterBtnClick}
+                          buttonText={textConstants.REGISTER}
+                        />
+                      }}
+                    </Mutation>
+                  )}
+                </ApolloConsumer>
               </Grid>
             </Grid>
           </Grid>
@@ -214,6 +279,6 @@ Registration.propTypes = {
 
 export default withStyles(styles)(connect(
   state => ({
-    
+    registerError: state.auth.registerError
   })
 )(Registration))

@@ -3,8 +3,16 @@ import { connect } from 'react-redux'
 import textConstants from '../constants/textConstants'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import { Grid, Button, Typography, TextField, InputAdornment, FormControlLabel, Checkbox } from '@material-ui/core'
+import { Grid, Typography, TextField, InputAdornment, FormControlLabel, Checkbox } from '@material-ui/core'
 import { AccountCircle, Https } from '@material-ui/icons'
+import { AUTH } from '../constants/ActionTypes'
+import Preloader from './Preloader'
+import DefaultError from './DefaultError'
+import { Mutation, ApolloConsumer } from 'react-apollo'
+import { LOGIN_USER } from '../graphql/mutations/auth'
+import { push } from 'react-router-redux'
+import { ROUTES } from '../constants/routes'
+import AuthButton from './AuthButton'
 
 const styles = theme => ({
   pageContainer: {
@@ -29,6 +37,10 @@ const styles = theme => ({
     minWidth: 180,
     backgroundColor: '#01579B',
     color: '#FFFFFF'
+  },
+  errorMessage: {
+    color: '#D50000',
+    marginTop: 10
   }
 })
 
@@ -42,6 +54,13 @@ class Login extends Component {
       rememberMe: false
     }
   }
+  componentWillUnmount() {
+    const { dispatch } = this.props
+
+    dispatch({
+      type: AUTH.CLEAR_LOGIN_ERROR_MESSAGE
+    })
+  }
   handleCheckboxChange = () => {
     const { rememberMe } = this.state
 
@@ -54,10 +73,51 @@ class Login extends Component {
       [e.target.name]: e.target.value
     })
   }
+  handleLoginBtnClick = (login) => {
+    const { username, password } = this.state
+
+    if (!username || !password) {
+      return false
+    }
+    
+    login({
+      variables: {
+        username,
+        password
+      }
+    })
+  }
+  setLoggedInUser = (user) => {
+    const { dispatch } = this.props
+
+    dispatch({
+      type: AUTH.SAVE_LOGGED_IN_USER,
+      payload: user
+    })
+
+    localStorage.setItem('user', user)
+
+    dispatch(push(ROUTES.TOOLS.BASE_PATH))
+  }
+  setLoginErrorMessage = () => {
+    const { dispatch } = this.props
+
+    dispatch({
+      type: AUTH.SET_LOGIN_ERROR_MESSAGE,
+      payload: textConstants.INVALID_USERNAME_OR_PASSWORD
+    })
+  }
   render() {
-    const { classes } = this.props
+    const { classes, loginError } = this.props
     const { rememberMe } = this.state
-    const { pageContainer, loginFormWrapper, loginFormContainer, loginForm, textField, button } = classes
+    const {
+      pageContainer,
+      loginFormWrapper,
+      loginFormContainer,
+      loginForm,
+      textField,
+      errorMessage
+    } = classes
 
     return (
       <div className={pageContainer}>
@@ -104,6 +164,13 @@ class Login extends Component {
                   }}
                 />
               </Grid>
+              {loginError ?
+                <Grid item>
+                  <Typography variant="subheading" className={errorMessage}>
+                    {loginError}
+                  </Typography>
+                </Grid> : null
+              }
               <Grid item>
                 <FormControlLabel
                   control={
@@ -118,14 +185,32 @@ class Login extends Component {
                 />
               </Grid>
               <Grid item>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  className={button}
-                  onClick={this.handleOpenClick}
-                >
-                  {textConstants.LOGIN}
-                </Button>
+                <ApolloConsumer>
+                  {client => (
+                    <Mutation
+                      mutation={LOGIN_USER}
+                      onCompleted={({ login }) => {
+                        if (login.data) {
+                          this.setLoggedInUser(login.data)
+                          client.writeData({ data: { isLoggedIn: true } })
+                        } else {
+                          this.setLoginErrorMessage()
+                        }
+                      }}
+                    >
+                      {(login, { loading, error }) => {
+                        if (loading) return <Preloader />
+                        if (error) return <DefaultError />
+
+                        return <AuthButton
+                          mutationAction={login}
+                          handleButtonClick={this.handleLoginBtnClick}
+                          buttonText={textConstants.LOGIN}
+                        />
+                      }}
+                    </Mutation>
+                  )}
+                </ApolloConsumer>
               </Grid>
             </Grid>
           </Grid>
@@ -141,6 +226,6 @@ Login.propTypes = {
 
 export default withStyles(styles)(connect(
   state => ({
-    
+    loginError: state.auth.loginError
   })
 )(Login))
