@@ -16,7 +16,8 @@ const styles = theme => ({
     background: theme.palette.secondary.main,
     borderRadius: 30,
     margin: '0 auto',
-    marginTop: 20
+    marginTop: 20,
+    paddingBottom: 10
   },
   autoCompleteWrapper: {
     maxWidth: 600,

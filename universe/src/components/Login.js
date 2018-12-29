@@ -20,13 +20,14 @@ const styles = theme => ({
     height: '100vh'
   },
   loginFormWrapper: {
-    height: '100%'
+    height: 'calc(100vh - 64px)',
+    position: 'relative'
   },
   loginFormContainer: {
     height: 400,
     width: 400,
     borderRadius: 30,
-    background: theme.palette.secondary.lightBackground
+    background: 'rgba(209, 209, 209, 0.5)'
   },
   loginForm: {
     height: '100%'
@@ -121,7 +122,7 @@ class Login extends Component {
     } = classes
 
     return (
-      <div className={pageContainer}>
+      <div className={`${pageContainer} default-page`}>
         <AppHeader />
         <Grid container className={loginFormWrapper} justify={'center'} alignItems={'center'}>
           <Grid item className={loginFormContainer}>

@@ -34,6 +34,45 @@ const styles = {
   },
   greetingMessage: {
     color: '#ffffff'
+  },
+  pageHeader: {
+    fontFamily: 'Roboto'
+  },
+  linksItemUnderline: {
+    height: 2,
+    width: '100%',
+    position: 'absolute',
+    background: '#ffffffb0',
+    marginTop: 5,
+    transition: 'ease .3s',
+    opacity: 0,
+    visibility: 'hidden'
+  },
+  linksItemContent: {
+    position: 'relative',
+    userSelect: 'none',
+    '&:link': {
+      textDecoration: 'none',
+      color: 'inherit'
+    },
+    '&:visited': {
+      textDecoration: 'none',
+      color: 'inherit'
+    },
+    '&:hover': {
+      textDecoration: 'none',
+      color: 'inherit',
+      cursor: 'pointer'
+    },
+    '&:hover .links-item-underline': {
+      opacity: 1,
+      transition: 'opacity .1s linear',
+      visibility: 'visible'
+    },
+    '&:active': {
+      textDecoration: 'none',
+      color: 'inherit'
+    }
   }
 }
 
@@ -50,32 +89,40 @@ class AppHeader extends Component {
   }
   render() {
     const { classes, isLoggedIn, user } = this.props
-    const { headerContainer,  toolbar, links, headerAuthBtn, greetingMessage } = classes
+    const {
+      headerContainer,
+      toolbar,
+      links,
+      headerAuthBtn,
+      greetingMessage,
+      pageHeader,
+      linksItemContent,
+    } = classes
 
     return (
-      <div className={`page-header`}>
+      <div className={pageHeader}>
         <AppBar position="static" className={headerContainer}>
           <Toolbar className={toolbar}>
             <Typography variant="title" color="inherit" className={`header-title`}>
-              <Link className="links-item-content" to={ROUTES.APP.HOME} > 
+              <Link className={linksItemContent} to={ROUTES.APP.HOME} > 
                 {textConstants.UNIVERSE}
               </Link>
             </Typography>
             <Grid container justify={'flex-start'} className={links} spacing={24}>
               <Grid item>
-                <Link className="links-item-content" to={ROUTES.APP.BASE_PATH} >
+                <Link className={linksItemContent} to={ROUTES.APP.BASE_PATH} >
                   {textConstants.STOCK_MARKET}
                   <div className="links-item-underline" />
                 </Link>
               </Grid>
               <Grid item>
-                <Link className="links-item-content" to={ROUTES.APP.NEWS} >
+                <Link className={linksItemContent} to={ROUTES.APP.NEWS} >
                   {textConstants.NEWS}
                   <div className="links-item-underline" />
                 </Link>
               </Grid>
               <Grid item>
-                <Link className="links-item-content" to={ROUTES.APP.IPO_CALENDAR} >
+                <Link className={linksItemContent} to={ROUTES.APP.IPO_CALENDAR} >
                   {textConstants.IPO_CALENDAR}
                   <div className="links-item-underline" />
                 </Link>
@@ -84,7 +131,7 @@ class AppHeader extends Component {
             <Grid container justify={'flex-end'} alignItems={'center'} spacing={8}>
               <Grid item>
                 {!isLoggedIn ?
-                  <Link className="links-item-content" to={ROUTES.APP.LOGIN} > 
+                  <Link className={linksItemContent} to={ROUTES.APP.LOGIN} > 
                     <Button color="inherit" className={headerAuthBtn}>
                       {textConstants.LOGIN}
                     </Button>
@@ -96,7 +143,7 @@ class AppHeader extends Component {
               </Grid>
               <Grid item>
                 {!isLoggedIn ?
-                  <Link className="links-item-content" to={ROUTES.APP.REGISTER} > 
+                  <Link className={linksItemContent} to={ROUTES.APP.REGISTER} > 
                     <Button color="inherit" className={headerAuthBtn}>
                       {textConstants.REGISTER}
                     </Button>

@@ -35,6 +35,17 @@ class ToolStocks extends Component {
       payload: DEFAULT_STOCKS_RANGE
     })
   }
+  componentWillReceiveProps(nextProps) {
+    const { dispatch, defaultStocks } = this.props
+    const { defaultStocks: nextDefaultStocks } = nextProps
+
+    if (defaultStocks.length !== nextDefaultStocks.length && nextDefaultStocks.length) {
+      dispatch({
+        type: TOOLS.SAVE_SELECTED_COMPANY_NAME,
+        payload: nextDefaultStocks[0]
+      })
+    }
+  }
   render() {
     const { companiesList, classes, selectedCompanyStocks, selectedCompany } = this.props
     const { stocksChartContainer, toolsStocksContainer, companyNameTitle } = classes
@@ -74,6 +85,7 @@ export default withStyles(styles)(connect(
     toolName: state.tools.toolName,
     companiesList: state.tools.defaultStocks || [],
     selectedCompany: state.tools.selectedCompany || {},
-    selectedCompanyStocks: state.tools.selectedCompanyStocks || []
+    selectedCompanyStocks: state.tools.selectedCompanyStocks || [],
+    defaultStocks: state.tools.defaultStocks || []
   })
 )(ToolStocks))

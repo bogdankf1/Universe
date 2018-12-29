@@ -5,18 +5,29 @@ import HomePage from './HomePage'
 import { ROUTES } from './../constants/routes'
 import { Route, Switch } from 'react-router-dom'
 import StocksPrediction from './StocksPrediction'
-import AppHeader from './AppHeader'
 import ToolsContainer from './ToolsContainer'
 import SymbolsContainer from './SymbolsContainer'
 import Registration from './Registration'
 import News from './News'
 import IPOCalendar from './IPOCalendar'
 import Login from './Login'
+import { withStyles } from '@material-ui/core/styles'
+
+const styles = theme => ({
+  appContainer: {
+    width: '100%',
+    height: '100%',
+    background: '#2B2C2F'
+  }
+})
 
 class App extends Component {
   render() {
+    const { classes } = this.props
+    const { appContainer } = classes
+
     return (
-      <div className="App">
+      <div className={appContainer}>
         <Switch>
           <Route component={IPOCalendar} path={ROUTES.APP.IPO_CALENDAR} />
           <Route component={News} path={ROUTES.APP.NEWS} />
@@ -32,8 +43,8 @@ class App extends Component {
   }
 }
 
-export default withRouter(connect(
+export default withStyles(styles)(withRouter(connect(
   state => ({
 
   })
-)(App))
+)(App)))

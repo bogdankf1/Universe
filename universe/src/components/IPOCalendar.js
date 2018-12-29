@@ -10,6 +10,9 @@ const styles = theme => ({
   pageContainer: {
     minHeight: '100vh'
   },
+  ipoCalendar: {
+    height: 'calc(100vh - 64px)'
+  },
   itemWrapper: {
     width: '100%'
   }
@@ -19,12 +22,12 @@ const styles = theme => ({
 class IPOCalendar extends Component {
   render() {
     const { classes } = this.props
-    const { pageContainer, itemWrapper } = classes
+    const { pageContainer, itemWrapper, ipoCalendar } = classes
 
     return (
-      <div className={pageContainer}>
+      <div className={`${pageContainer} default-page`}>
         <AppHeader />
-        <Grid container justify={'center'} alignItems={'center'} direction={'column'}>
+        <Grid container className={ipoCalendar} alignItems={'center'} direction={'column'}>
           <Grid item className={itemWrapper}>
             <IPOIntervalSelection />
           </Grid>

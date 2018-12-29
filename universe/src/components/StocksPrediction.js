@@ -15,7 +15,7 @@ const styles = theme => ({
     background: theme.palette.primary.light
   },
   predictionContainer: {
-    height: '100%'
+    height: 'calc(100vh - 64px)'
   }
 })
 
@@ -33,7 +33,7 @@ class StocksPrediction extends Component {
     const { predictionContainer } = classes
 
     return (
-      <div className="stocks-prediction-page-wrapper">
+      <div className="stocks-page">
         <AppHeader />
         <Grid container justify={'center'} alignItems={'center'} className={predictionContainer}>
           <Grid item>
