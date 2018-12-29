@@ -1,11 +1,8 @@
 .stocks-prediction-page-wrapper {
     width: 100%;
-    height: calc(100vh - 64px);
+    height: 100vh;
     background: url('../../public/images/stock-market-bg.jpeg') no-repeat 0 0;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .tool-card {
@@ -34,7 +31,7 @@
 
 .coming-soon-screen {
     width: 100%;
-    height: calc(100vh - 64px);
+    height: 100vh;
     background: url('../../public/images/coming-soon-bg.jpg') no-repeat 0 0;
     background-size: cover;
 }

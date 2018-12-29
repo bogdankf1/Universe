@@ -5,11 +5,11 @@ import { withStyles } from '@material-ui/core/styles'
 import MarketNewsSection from './MarketNewsSection'
 import MarketNewsLoading from './MarketNewsLoading'
 import CompanyNewsSection from './CompanyNewsSection'
+import AppHeader from './AppHeader';
 
 const styles = theme => ({
   pageContainer: {
-    minHeight: 'calc(100vh - 64px)',
-    padding: 20
+    minHeight: '100vh'
   }
 })
 
@@ -21,6 +21,7 @@ class News extends Component {
 
     return (
       <div className={pageContainer}>
+        <AppHeader />
         <MarketNewsLoading />
         {marketNewsList.length ?
           <MarketNewsSection newsList={marketNewsList} /> : null

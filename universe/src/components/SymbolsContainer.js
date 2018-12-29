@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import SymbolsLoading from './SymbolsLoading'
+import AppHeader from './AppHeader';
 
 const styles = theme => ({
   symbolsContainer: {
-    height: 'calc(100vh - 64px)'
+    height: '100vh'
   }
 })
 
@@ -17,6 +18,7 @@ class SymbolsContainer extends Component {
 
     return (
       <div className={symbolsContainer}>
+        <AppHeader />
         <SymbolsLoading />
       </div>
     )

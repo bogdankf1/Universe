@@ -13,10 +13,11 @@ import { LOGIN_USER } from '../graphql/mutations/auth'
 import { push } from 'react-router-redux'
 import { ROUTES } from '../constants/routes'
 import AuthButton from './AuthButton'
+import AppHeader from './AppHeader';
 
 const styles = theme => ({
   pageContainer: {
-    height: 'calc(100vh - 64px)'
+    height: '100vh'
   },
   loginFormWrapper: {
     height: '100%'
@@ -121,6 +122,7 @@ class Login extends Component {
 
     return (
       <div className={pageContainer}>
+        <AppHeader />
         <Grid container className={loginFormWrapper} justify={'center'} alignItems={'center'}>
           <Grid item className={loginFormContainer}>
             <Grid container className={loginForm} justify={'center'} alignItems={'center'} direction={'column'}>

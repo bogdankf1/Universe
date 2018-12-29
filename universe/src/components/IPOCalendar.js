@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
 import IPOIntervalSelection from './IPOIntervalSelection'
+import AppHeader from './AppHeader'
 
 const styles = theme => ({
   pageContainer: {
-    minHeight: 'calc(100vh - 64px)',
-    padding: 20
+    minHeight: '100vh'
   },
   itemWrapper: {
     width: '100%'
@@ -23,6 +23,7 @@ class IPOCalendar extends Component {
 
     return (
       <div className={pageContainer}>
+        <AppHeader />
         <Grid container justify={'center'} alignItems={'center'} direction={'column'}>
           <Grid item className={itemWrapper}>
             <IPOIntervalSelection />

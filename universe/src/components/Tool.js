@@ -7,10 +7,11 @@ import { ROUTES } from '../constants/routes'
 import ToolStocks from './ToolStocks'
 import ComingSoon from './ComingSoon'
 import ToolCryptoCurrencies from './ToolCryptoCurrencies'
+import AppHeader from './AppHeader';
 
 const styles = {
   toolContainer: {
-    minHeight: 'calc(100vh - 64px)'
+    minHeight: '100vh'
   }
 }
 
@@ -20,6 +21,7 @@ class Tool extends Component {
     const { toolContainer } = classes
     return (
       <div className={toolContainer}>
+        <AppHeader />
         <Switch>
           <Route component={ToolStocks} path={ROUTES.TOOLS.STOCKS} />
           <Route component={ComingSoon} path={ROUTES.TOOLS.INDICES} />

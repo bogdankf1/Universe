@@ -2,16 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import { Button } from '../../node_modules/@material-ui/core'
+import { Button, Grid } from '../../node_modules/@material-ui/core'
 import textConstants from '../constants/textConstants'
 import { push } from 'react-router-redux'
 import { ROUTES } from '../constants/routes'
+import AppHeader from './AppHeader'
 
 const styles = theme => ({
   button: {
     color: theme.palette.secondary.light,
     marginRight: 20,
     background: theme.palette.primary.light
+  },
+  predictionContainer: {
+    height: '100%'
   }
 })
 
@@ -26,27 +30,23 @@ class StocksPrediction extends Component {
   }
   render() {
     const { classes } = this.props
+    const { predictionContainer } = classes
 
     return (
-      <div className="page default-page">
-        <div className="stocks-prediction-page-wrapper">
-          <Button
-            variant="outlined"
-            color={"primary"}
-            className={`${classes.button} primary-stock-button`}
-            onClick={this.handleOpenClick}
-          >
-            {textConstants.OPEN_STOCK_MARKET_TOOLS}
-          </Button>
-          {/* <Button
-            variant="outlined"
-            color={"primary"}
-            className={`${classes.button} primary-stock-button`}
-            onClick={this.loadStocksSymbols}
-          >
-            {textConstants.LOAD_STOCKS_SYMBOLS}
-          </Button> */}
-        </div>
+      <div className="stocks-prediction-page-wrapper">
+        <AppHeader />
+        <Grid container justify={'center'} alignItems={'center'} className={predictionContainer}>
+          <Grid item>
+            <Button
+              variant="outlined"
+              color={"primary"}
+              className={`${classes.button} primary-stock-button`}
+              onClick={this.handleOpenClick}
+            >
+              {textConstants.OPEN_STOCK_MARKET_TOOLS}
+            </Button>
+          </Grid>
+        </Grid>
       </div>
      ) 
   }
