@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import textConstants from '../constants/textConstants'
 import AboutUsCard from './AboutUsCard'
 import AppFooter from './AppFooter'
+import AppHeader from './AppHeader';
 
 const styles = theme => ({
   mainTitleContainer: {
@@ -39,6 +40,7 @@ class HomePage extends Component {
     } = this.props.classes
      return (
       <div className="page default-page">
+        <AppHeader />
         <div className="home-page-container">
           <div className="home-page-greeting-section">
             <Grid container justify={'center'} alignItems={'center'} className={mainTitleContainer}>

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import textConstants from '../constants/textConstants'
 import { Grid, Typography } from '@material-ui/core'
+import AppHeader from './AppHeader';
 
 const styles = {
   titleContainer: {
@@ -18,6 +19,7 @@ class ComingSoon extends Component {
 
     return (
       <div className={'coming-soon-screen'}>
+        <AppHeader />
         <Grid container justify={'center'} alignItems={'center'} className={titleContainer}>
           <Grid item>
             <Typography variant="display4" component="h3">

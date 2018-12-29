@@ -13,11 +13,10 @@ import AuthButton from './AuthButton'
 import { AUTH } from '../constants/ActionTypes'
 import { push } from 'react-router-redux'
 import { ROUTES } from '../constants/routes'
+import AppHeader from './AppHeader';
 
 const styles = theme => ({
   pageContainer: {
-    // height: 'calc(100vh - 64px)'
-    marginTop: 20,
     marginBottom: 20
   },
   registerFormWrapper: {
@@ -118,6 +117,7 @@ class Registration extends Component {
 
     return (
       <div className={pageContainer}>
+        <AppHeader />
         <Grid container className={registerFormWrapper} justify={'center'} alignItems={'center'}>
           <Grid item className={registerFormContainer}>
             <Grid container className={registerForm} justify={'center'} alignItems={'center'} direction={'column'}>

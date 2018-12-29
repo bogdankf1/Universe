@@ -11,12 +11,13 @@ import colorTheme from '../utils/colorTheme'
 import Grid from '@material-ui/core/Grid'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../constants/routes'
-import { AUTH } from '../constants/ActionTypes';
+import { AUTH } from '../constants/ActionTypes'
 
 const styles = {
   headerContainer: {
-    backgroundColor: colorTheme.palette.primary.main,
-    color: colorTheme.palette.secondary.light
+    backgroundColor: 'transparent',
+    color: colorTheme.palette.secondary.light,
+    boxShadow: 'none'
   },
   toolbar: {
     justifyContent: 'space-between',

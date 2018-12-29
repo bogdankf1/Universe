@@ -17,7 +17,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AppHeader />
         <Switch>
           <Route component={IPOCalendar} path={ROUTES.APP.IPO_CALENDAR} />
           <Route component={News} path={ROUTES.APP.NEWS} />

@@ -6,10 +6,12 @@ import { Grid } from '@material-ui/core'
 import textConstants from '../constants/textConstants'
 import ToolCard from './ToolCard'
 import { TOOLS_TYPES } from '../constants/app'
+import AppHeader from './AppHeader';
 
 const styles = {
   toolsWrapper: {
-    height: 'calc(100vh - 60px)'
+    height: '100%',
+    minHeight: '100vh'
   },
   toolsContainer: {
     width: '100%',
@@ -24,6 +26,7 @@ class ToolsBox extends Component {
     const { toolsWrapper, toolsContainer } = classes
     return (
       <div className={toolsWrapper}>
+        <AppHeader />
         <div className="stock-market-tools-header"></div>
         <Grid container className={toolsContainer} justify={'center'} alignItems={'center'} spacing={8}>
           {TOOLS_TYPES.map((toolType, idx) =>
