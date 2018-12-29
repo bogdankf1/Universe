@@ -11,14 +11,13 @@ import colorTheme from '../utils/colorTheme'
 import Grid from '@material-ui/core/Grid'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../constants/routes'
+import { AUTH } from '../constants/ActionTypes'
 
 const styles = {
-  root: {
-
-  },
   headerContainer: {
-    backgroundColor: colorTheme.palette.primary.main,
-    color: colorTheme.palette.secondary.light
+    backgroundColor: 'transparent',
+    color: colorTheme.palette.secondary.light,
+    boxShadow: 'none'
   },
   toolbar: {
     justifyContent: 'space-between',
@@ -30,68 +29,129 @@ const styles = {
     paddingLeft: 50,
     fontSize: 14
   },
-  linksItem : {
-
+  headerAuthBtn: {
+    background: '#ffffff21'
+  },
+  greetingMessage: {
+    color: '#ffffff'
+  },
+  pageHeader: {
+    fontFamily: 'Roboto'
+  },
+  linksItemUnderline: {
+    height: 2,
+    width: '100%',
+    position: 'absolute',
+    background: '#ffffffb0',
+    marginTop: 5,
+    transition: 'ease .3s',
+    opacity: 0,
+    visibility: 'hidden'
+  },
+  linksItemContent: {
+    position: 'relative',
+    userSelect: 'none',
+    '&:link': {
+      textDecoration: 'none',
+      color: 'inherit'
+    },
+    '&:visited': {
+      textDecoration: 'none',
+      color: 'inherit'
+    },
+    '&:hover': {
+      textDecoration: 'none',
+      color: 'inherit',
+      cursor: 'pointer'
+    },
+    '&:hover .links-item-underline': {
+      opacity: 1,
+      transition: 'opacity .1s linear',
+      visibility: 'visible'
+    },
+    '&:active': {
+      textDecoration: 'none',
+      color: 'inherit'
+    }
   }
 }
 
 
 class AppHeader extends Component {
+  logout = () => {
+    const { dispatch } = this.props
+
+    dispatch({
+      type: AUTH.LOGOUT
+    })
+
+    localStorage.removeItem('user')
+  }
   render() {
-    const { root, headerContainer, headerTitle, toolbar, links, linksItem } = this.props.classes
+    const { classes, isLoggedIn, user } = this.props
+    const {
+      headerContainer,
+      toolbar,
+      links,
+      headerAuthBtn,
+      greetingMessage,
+      pageHeader,
+      linksItemContent,
+    } = classes
+
     return (
-      <div className={`${root} page-header`}>
+      <div className={pageHeader}>
         <AppBar position="static" className={headerContainer}>
           <Toolbar className={toolbar}>
-            <Typography variant="title" color="inherit" className={`${headerTitle} header-title`}>
-              <Link className="links-item-content" to={ROUTES.HOME} > 
+            <Typography variant="title" color="inherit" className={`header-title`}>
+              <Link className={linksItemContent} to={ROUTES.APP.HOME} > 
                 {textConstants.UNIVERSE}
               </Link>
             </Typography>
-            <Grid
-              container
-              justify={'center'}
-              className={links}
-              spacing={24}
-            >
-              <Grid item className={linksItem}>
-                <Link className="links-item-content" to={ROUTES.APP} >
-                  {textConstants.APP}
+            <Grid container justify={'flex-start'} className={links} spacing={24}>
+              <Grid item>
+                <Link className={linksItemContent} to={ROUTES.APP.BASE_PATH} >
+                  {textConstants.STOCK_MARKET}
                   <div className="links-item-underline" />
                 </Link>
               </Grid>
-              <Grid item className={linksItem}>
-                <a className="links-item-content">
-                  {textConstants.ABOUT_US}
+              <Grid item>
+                <Link className={linksItemContent} to={ROUTES.APP.NEWS} >
+                  {textConstants.NEWS}
                   <div className="links-item-underline" />
-                </a>
-              </Grid>
-              <Grid item className={linksItem}>
-                <a className="links-item-content">
-                  {textConstants.PRODUCTS}
-                  <div className="links-item-underline" />
-                </a>
+                </Link>
               </Grid>
               <Grid item>
-                <a className="links-item-content">
-                  {textConstants.CONTACT_US}
+                <Link className={linksItemContent} to={ROUTES.APP.IPO_CALENDAR} >
+                  {textConstants.IPO_CALENDAR}
                   <div className="links-item-underline" />
-                </a>
+                </Link>
               </Grid>
             </Grid>
-            <Grid
-              container
-              justify={'flex-end'}
-            >
+            <Grid container justify={'flex-end'} alignItems={'center'} spacing={8}>
               <Grid item>
-                <Button color="inherit" className="header-auth-button">
-                  {textConstants.LOGIN}
-                </Button>
+                {!isLoggedIn ?
+                  <Link className={linksItemContent} to={ROUTES.APP.LOGIN} > 
+                    <Button color="inherit" className={headerAuthBtn}>
+                      {textConstants.LOGIN}
+                    </Button>
+                  </Link> :
+                  <Typography variant="subheading" className={greetingMessage}>
+                    {`${textConstants.WELCOME}${user.username}!`}
+                  </Typography>
+                }
               </Grid>
               <Grid item>
-                <Button color="inherit" className="header-auth-button">
-                  {textConstants.REGISTER}
-                </Button>
+                {!isLoggedIn ?
+                  <Link className={linksItemContent} to={ROUTES.APP.REGISTER} > 
+                    <Button color="inherit" className={headerAuthBtn}>
+                      {textConstants.REGISTER}
+                    </Button>
+                  </Link> :
+                  <Button color="inherit" className={headerAuthBtn} onClick={this.logout}>
+                    {textConstants.LOGOUT}
+                  </Button>
+                }
               </Grid>
             </Grid>
           </Toolbar>
@@ -107,6 +167,7 @@ AppHeader.propTypes = {
 
 export default withStyles(styles)(connect(
   state => ({
-    // someProp: state.someReducer.prop
+    isLoggedIn: state.auth.isLoggedIn,
+    user: state.auth.user
   })
 )(AppHeader))

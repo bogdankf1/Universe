@@ -2,33 +2,34 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import { Grid } from '../../node_modules/@material-ui/core'
+import { Grid } from '@material-ui/core'
 import textConstants from '../constants/textConstants'
 import ToolCard from './ToolCard'
 import { TOOLS_TYPES } from '../constants/app'
+import AppHeader from './AppHeader';
 
 const styles = {
+  toolsWrapper: {
+    height: '100%',
+    minHeight: '100vh'
+  },
   toolsContainer: {
     width: '100%',
-    padding: '20px'
+    height: 'calc(100vh - 64px)',
+    padding: '20px',
+    position: 'relative'
   }
 }
 
-class StocksMarketTools extends Component {
+class ToolsBox extends Component {
   render() {
     const { classes } = this.props
-    const { toolsContainer } = classes
+    const { toolsWrapper, toolsContainer } = classes
     return (
-      <div className="stock-market-tools-wrapper">
-        <div className="stock-market-tools-header">
-
-        </div>
-        <Grid
-          container
-          className={toolsContainer}
-          justify={'center'}
-          spacing={8}
-        >
+      <div className={`${toolsWrapper} stocks-page`}>
+        <AppHeader />
+        <div className="stock-market-tools-header"></div>
+        <Grid container className={toolsContainer} justify={'center'} alignItems={'center'} spacing={8}>
           {TOOLS_TYPES.map((toolType, idx) =>
             <Grid item key={idx} >
               <ToolCard
@@ -44,7 +45,7 @@ class StocksMarketTools extends Component {
   }
 }
 
-StocksMarketTools.propTypes = {
+ToolsBox.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
@@ -52,4 +53,4 @@ export default withStyles(styles)(connect(
   state => ({
     
   })
-)(StocksMarketTools))
+)(ToolsBox))

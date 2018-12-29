@@ -7,8 +7,9 @@ import Typography from '@material-ui/core/Typography'
 import textConstants from '../constants/textConstants'
 import AboutUsCard from './AboutUsCard'
 import AppFooter from './AppFooter'
+import AppHeader from './AppHeader';
 
-const styles = {
+const styles = theme => ({
   mainTitleContainer: {
     width: '100%',
     height: '100%',
@@ -18,7 +19,8 @@ const styles = {
     zIndex: '10'
   },
   mainTitleText: {
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    color: theme.palette.primary.darkText
   },
   aboutSectionContainer: {
     width: '100%',
@@ -26,7 +28,7 @@ const styles = {
     paddingLeft: 100,
     paddingRight: 100
   }
-}
+})
 
 class HomePage extends Component {
   render() {
@@ -38,55 +40,29 @@ class HomePage extends Component {
     } = this.props.classes
      return (
       <div className="page default-page">
+        <AppHeader />
         <div className="home-page-container">
           <div className="home-page-greeting-section">
-            <Grid
-              container
-              justify={'center'}
-              alignItems={'center'}
-              className={mainTitleContainer}
-            >
-              <Grid
-                item
-                className={`${mainTitle}`}
-              >
-                <Typography
-                  variant="display3"
-                  gutterBottom
-                  className={`${mainTitleText} home-page-main-title`}
-                >
+            <Grid container justify={'center'} alignItems={'center'} className={mainTitleContainer}>
+              <Grid item className={mainTitle}>
+                <Typography variant="display3" gutterBottom className={mainTitleText}>
                   {textConstants.UNIVERSE_PROJECT}
                 </Typography>
-                <Typography
-                  variant="display1"
-                  gutterBottom
-                >
+                <Typography variant="display1" gutterBottom>
                   {textConstants.PREDICT_PRICE_ON_STOCKS}
                 </Typography>
               </Grid>
             </Grid>
           </div>
           <div className="home-page-about-section">
-            <Grid
-              container
-              className={aboutSectionContainer}
-              justify={"center"}
-              alignItems={"center"}
-              spacing={32}
-            >
-              <Grid
-                item
-              >
+            <Grid container className={aboutSectionContainer} justify={"center"} alignItems={"center"} spacing={32}>
+              <Grid item>
                 <AboutUsCard />
               </Grid>
-              <Grid
-                item
-              >
+              <Grid item>
                 <AboutUsCard />
               </Grid>
-              <Grid
-                item
-              >
+              <Grid item>
                 <AboutUsCard />
               </Grid>
             </Grid>

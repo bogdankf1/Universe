@@ -1,7 +1,15 @@
-import app from './app'
-import stockMarketTools from './stockMarketTools'
+import tools from './tools'
+import symbols from './symbols'
+import prediction from './prediction'
+import news from './news'
+import ipo from './ipo'
+import auth from './auth'
 
 export default {
-    app,
-    stockMarketTools
+  tools,
+  symbols,
+  prediction,
+  news,
+  ipo,
+  auth
 }
