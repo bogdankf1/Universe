@@ -15,7 +15,7 @@ import { ROUTES } from '../constants/routes'
 const styles = theme => ({
   toolCard: {
     width: 200,
-    height: 250,
+    height: 260,
     background: theme.palette.secondary.main,
     borderWidth: 1,
     borderStyle: 'solid',

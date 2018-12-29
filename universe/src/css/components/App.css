@@ -1,8 +1,136 @@
-.App {
-    width: 100%;
-    height: 100%;
-    background: #2B2C2F
+/* APP HEADER START */
+.links-item-underline {
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  background: #ffffffb0;
+  margin-top: 5px;
+  transition: ease .3s ;
+  opacity: 0;
+  visibility: hidden;
 }
+/* APP HEADER END */
+
+/* NEWS SECTION START */
 .main-news-image {
-    background-image: url('../../public/images/main-news-bg.jpeg');
+  background-image: url('../../public/images/main-news-bg.jpeg');
 }
+/* NEWS SECTION END */
+
+/* COMING SOON SCREEN START */
+.news-screen {
+  background-image: url('../../public/images/coming-soon-bg.jpg');
+}
+/* COMING SOON SCREEN END */
+
+
+/* SCROLLBAR START */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #888;
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #58595B;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+/* SCROLLBAR END */
+
+
+/* STOCKS SECTION START */
+.stocks-page {
+  width: 100%;
+  height: 100vh;
+  background: url('../../public/images/stock-market-bg.jpeg') no-repeat 0 0;
+  background-size: cover;
+  position: relative;
+}
+.stocks-page::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #2727278e;
+}
+.tool-card {
+  width: 200px;
+  height: 150px;
+  background-size: cover;
+}
+.tool-card-stocks {
+  background: url('../../public/images/tool-1.jpg') no-repeat 0 0;
+}
+.tool-card-indices {
+  background: url('../../public/images/tool-2.jpg') no-repeat 0 0;
+}
+.tool-card-indices_futures {
+  background: url('../../public/images/tool-3.jpg') no-repeat 0 0;
+}
+.tool-card-currencies {
+  background: url('../../public/images/tool-4.jpg') no-repeat 0 0;
+}
+.tool-card-cryptocurrencies {
+  background: url('../../public/images/tool-5.jpg') no-repeat 0 0;
+}
+.tool-card-commodities {
+  background: url('../../public/images/tool-6.jpg') no-repeat 0 0;
+}
+/* STOCKS SECTION END */
+
+
+/* HOME SECTION START */
+.default-page {
+  width: 100%;
+  height: 100vh;
+  background: url('../../public/images/home-page-bg.jpg');
+  background-size: 100% 100%;
+  position: relative;
+}
+.default-page::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #2727278e;
+}
+.home-page-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.home-page-greeting-section {
+  width: 100%;
+  height: 100%;
+}
+.home-page-about-section {
+  width: 100%;
+  height: 700px;
+}
+.home-page-products-section {
+  width: 100%;
+  height: 600px;
+  background: #212121;
+}
+.home-page-contact-us-section {
+  width: 100%;
+  height: 400px;
+}
+/* HOME SECTION END */
+
+
+/* LOGIN SECTION START */
+.login-page {
+  background: url('../../public/images/home-page-bg.jpg');
+  background-size: 100% 100%; 
+}
+/* LOGIN SECTION END */

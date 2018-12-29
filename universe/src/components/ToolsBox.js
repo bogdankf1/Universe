@@ -15,8 +15,9 @@ const styles = {
   },
   toolsContainer: {
     width: '100%',
-    height: '100%',
-    padding: '20px'
+    height: 'calc(100vh - 64px)',
+    padding: '20px',
+    position: 'relative'
   }
 }
 
@@ -25,7 +26,7 @@ class ToolsBox extends Component {
     const { classes } = this.props
     const { toolsWrapper, toolsContainer } = classes
     return (
-      <div className={toolsWrapper}>
+      <div className={`${toolsWrapper} stocks-page`}>
         <AppHeader />
         <div className="stock-market-tools-header"></div>
         <Grid container className={toolsContainer} justify={'center'} alignItems={'center'} spacing={8}>
