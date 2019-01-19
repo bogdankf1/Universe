@@ -8,6 +8,7 @@ import textConstants from '../constants/textConstants'
 import AboutUsCard from './AboutUsCard'
 import AppFooter from './AppFooter'
 import AppHeader from './AppHeader';
+import MobileMenu from './MobileMenu';
 
 const styles = theme => ({
   mainTitleContainer: {
@@ -54,7 +55,7 @@ class HomePage extends Component {
               </Grid>
             </Grid>
           </div>
-          <div className="home-page-about-section">
+          {/* <div className="home-page-about-section">
             <Grid container className={aboutSectionContainer} justify={"center"} alignItems={"center"} spacing={32}>
               <Grid item>
                 <AboutUsCard />
@@ -73,8 +74,9 @@ class HomePage extends Component {
           <div className="home-page-contact-us-section">
 
           </div>
-          <AppFooter />
+          <AppFooter /> */}
         </div>
+        <MobileMenu />
       </div>
      ) 
   }

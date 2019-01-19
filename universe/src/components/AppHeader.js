@@ -100,15 +100,15 @@ class AppHeader extends Component {
     } = classes
 
     return (
-      <div className={pageHeader}>
+      <div className={`${pageHeader} page-header`}>
         <AppBar position="static" className={headerContainer}>
-          <Toolbar className={toolbar}>
+          <Toolbar className={`${toolbar} header-toolbar`}>
             <Typography variant="title" color="inherit" className={`header-title`}>
               <Link className={linksItemContent} to={ROUTES.APP.HOME} > 
                 {textConstants.UNIVERSE}
               </Link>
             </Typography>
-            <Grid container justify={'flex-start'} className={links} spacing={24}>
+            <Grid container justify={'flex-start'} className={`${links} header-links`} spacing={24}>
               <Grid item>
                 <Link className={linksItemContent} to={ROUTES.APP.BASE_PATH} >
                   {textConstants.STOCK_MARKET}
@@ -129,7 +129,7 @@ class AppHeader extends Component {
               </Grid>
             </Grid>
             <Grid container justify={'flex-end'} alignItems={'center'} spacing={8}>
-              <Grid item>
+              <Grid item className={'auth-buttons-container'}>
                 {!isLoggedIn ?
                   <Link className={linksItemContent} to={ROUTES.APP.LOGIN} > 
                     <Button color="inherit" className={headerAuthBtn}>
@@ -141,7 +141,7 @@ class AppHeader extends Component {
                   </Typography>
                 }
               </Grid>
-              <Grid item>
+              <Grid item className={'auth-buttons-container'}>
                 {!isLoggedIn ?
                   <Link className={linksItemContent} to={ROUTES.APP.REGISTER} > 
                     <Button color="inherit" className={headerAuthBtn}>
@@ -152,6 +152,9 @@ class AppHeader extends Component {
                     {textConstants.LOGOUT}
                   </Button>
                 }
+              </Grid>
+              <Grid item className={'menu-icon'}>
+                <i class="material-icons">menu</i>
               </Grid>
             </Grid>
           </Toolbar>

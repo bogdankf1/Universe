@@ -9,6 +9,9 @@ import CompanyNewsSelectionCard from './CompanyNewsSelectionCard'
 const styles = theme => ({
   container: {
     padding: '10px 0'
+  },
+  companyNewsSelectionCard: {
+    padding: 5
   }
 })
 
@@ -16,12 +19,12 @@ const styles = theme => ({
 class CompanyNewsDefaultSelection extends Component {
   render() {
     const { classes } = this.props
-    const { container } = classes
+    const { container, companyNewsSelectionCard } = classes
 
     return (
-      <Grid container className={container} justify={'center'} alignItems={'center'} spacing={8}>
+      <Grid container className={container} justify={'center'} alignItems={'center'}>
         {DEFAULT_LOADED_STOCKS.map((item, idx) =>
-          <Grid item key={idx}>
+          <Grid item key={idx} className={companyNewsSelectionCard}>
             <CompanyNewsSelectionCard selectedCompanySymbol={item} />
           </Grid>
         )}

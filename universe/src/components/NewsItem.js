@@ -36,7 +36,7 @@ class NewsItem extends Component {
     const { newsItemWrapper, newsItemHeadline } = classes
 
     return (
-      <Grid container justify={'center'} direction={'column'} spacing={8} className={newsItemWrapper}>
+      <Grid container justify={'center'} direction={'column'} className={newsItemWrapper}>
         <Grid item>
           <Typography variant="caption">
             {newsItem.source}

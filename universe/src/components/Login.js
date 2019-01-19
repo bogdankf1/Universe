@@ -21,7 +21,9 @@ const styles = theme => ({
   },
   loginFormWrapper: {
     height: 'calc(100vh - 64px)',
-    position: 'relative'
+    position: 'relative',
+    paddingLeft: 20,
+    paddingRight: 20
   },
   loginFormContainer: {
     height: 400,

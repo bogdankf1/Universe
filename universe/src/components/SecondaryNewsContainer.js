@@ -10,7 +10,11 @@ const styles = theme => ({
     maxWidth: 750,
     background: theme.palette.secondary.main,
     borderRadius: 30,
-    margin: '0 auto'
+    margin: '0 auto',
+    padding: 10
+  },
+  secondaryNewsItem: {
+    padding: 5
   }
 })
 
@@ -18,12 +22,12 @@ const styles = theme => ({
 class SecondaryNewsContainer extends Component {
   render() {
     const { classes, newsList } = this.props
-    const { secondaryNewsContainer } = classes
+    const { secondaryNewsContainer, secondaryNewsItem } = classes
 
     return (
-      <Grid container className={secondaryNewsContainer} justify={'center'} alignItems={'center'} spacing={16}>
+      <Grid container className={secondaryNewsContainer} justify={'center'} alignItems={'center'}>
         {newsList.map((newsItem, idx) =>
-          <Grid item key={idx}>
+          <Grid item key={idx} className={secondaryNewsItem}>
             <NewsItem newsItem={newsItem} />
           </Grid>
         )}

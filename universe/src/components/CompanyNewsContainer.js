@@ -10,6 +10,9 @@ const styles = theme => ({
   companySymbolHeadline: {
     marginLeft: 50,
     marginBottom: 25
+  },
+  companyNewsItem: {
+    padding: 5
   }
 })
 
@@ -17,7 +20,7 @@ const styles = theme => ({
 class CompanyNewsContainer extends Component {
   render() {
     const { classes, companyNewsList, selectedCompanySymbol = DEFAULT_LOADED_STOCKS[0] } = this.props
-    const { companySymbolHeadline } = classes
+    const { companySymbolHeadline, companyNewsItem } = classes
 
     return (
       <Grid container justify={'center'} direction={'column'}>
@@ -27,9 +30,9 @@ class CompanyNewsContainer extends Component {
           </Typography>
         </Grid>
         <Grid item>
-          <Grid container justify={'center'} alignItems={'center'} spacing={16}>
+          <Grid container justify={'center'} alignItems={'center'}>
             {companyNewsList.map((newsItem, idx) =>
-              <Grid item key={idx}>
+              <Grid item key={idx} className={companyNewsItem}>
                 <NewsItem newsItem={newsItem} />
               </Grid>
             )}

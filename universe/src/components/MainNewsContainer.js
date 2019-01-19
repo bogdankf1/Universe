@@ -9,7 +9,8 @@ const styles = theme => ({
     maxWidth: 750,
     background: theme.palette.secondary.main,
     borderRadius: 30,
-    margin: '0 auto'
+    margin: '0 auto',
+    padding: 10
   },
   mainNewsImage: {
     backgroundSize: '100% 100%',
@@ -33,7 +34,11 @@ const styles = theme => ({
     }
   },
   newsTextSection: {
-    maxWidth: 400
+    maxWidth: 400,
+    padding: 5
+  },
+  newsImageSection: {
+    padding: 5
   }
 })
 
@@ -56,16 +61,17 @@ class MainNewsContainer extends Component {
       dateLineContainer,
       headlineContainer,
       summaryContainer,
-      newsTextSection
+      newsTextSection,
+      newsImageSection
     } = classes
 
     return (
-      <Grid container className={mainNewsContainer} justify={'center'} alignItems={'center'} spacing={8}>
-        <Grid item>
+      <Grid container className={mainNewsContainer} justify={'center'} alignItems={'center'}>
+        <Grid item className={newsImageSection}>
           <div className={`${mainNewsImage} main-news-image`} onClick={this.goToNews} /*style={{backgroundImage: `url('${newsItem.image}')`}}*/ />
         </Grid>
         <Grid item className={newsTextSection}>
-          <Grid container justify={'center'} direction={'column'} spacing={8}>
+          <Grid container justify={'center'} direction={'column'}>
             <Grid item className={dateLineContainer}>
               <Grid container justify={'space-between'} alignItems={'center'}>
                 <Grid item>
