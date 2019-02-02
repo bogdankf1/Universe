@@ -8,18 +8,25 @@ import IPOScheduleBodyItem from './IPOScheduleBodyItem'
 const styles = theme => ({
   scheduleBodyContainer: {
 
+  },
+  scheduleBodyItem: {
+    width: '100%',
+    padding: 5,
+    '&:nth-child(2n + 1)': {
+      backgroundColor: theme.palette.primary.darkText
+    }
   }
 })
 
 class IPOScheduleBody extends Component {
   render() {
     const { classes, ipoData } = this.props
-    const { scheduleBodyContainer } = classes
-
+    const { scheduleBodyContainer, scheduleBodyItem } = classes
+    console.log(ipoData)
     return (
-      <Grid container className={scheduleBodyContainer} justify={'center'} alignItems={'center'}>
+      <Grid container className={scheduleBodyContainer} justify={'space-between'} alignItems={'center'}>
         {ipoData.length ? ipoData.map((ipoItem, idx) =>
-          <Grid item key={idx}>
+          <Grid item key={idx} className={scheduleBodyItem}>
             <IPOScheduleBodyItem ipoItem={ipoItem} />
           </Grid>
         ) : null}

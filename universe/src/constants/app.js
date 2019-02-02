@@ -1,3 +1,6 @@
+import textConstants from "./textConstants";
+import { ROUTES } from "./routes";
+
 export const TOOLS_NAMES = {
     STOCKS: 'STOCKS',
     INDICES: 'INDICES',
@@ -27,3 +30,28 @@ export const PREDICTION_TRAINING_DAYS = [10, 20, 50, 100]
 export const EPOCHS_AMOUNTS = [128, 256, 512, 1024, 2048, 4096]
 
 export const IPO_SCHEDULE_FIELDS = ['COMPANY', 'SYMBOL', 'MARKET', 'PRICE', 'AMOUNT', 'EXPECTED']
+
+export const MOBILE_MENU_ITEMS = [
+  {
+    title: textConstants.STOCK_MARKET,
+    route: ROUTES.APP.BASE_PATH
+  },
+  {
+    title: textConstants.NEWS,
+    route: ROUTES.APP.NEWS
+  },
+  {
+    title: textConstants.IPO_CALENDAR,
+    route: ROUTES.APP.IPO_CALENDAR
+  },
+  {
+    title: textConstants.LOGIN,
+    route: ROUTES.APP.LOGIN   
+  },
+  {
+    title: textConstants.REGISTER,
+    route: ROUTES.APP.REGISTER   
+  }
+]
+
+export const CURRENCY_SIGN = '$'

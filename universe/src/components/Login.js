@@ -14,6 +14,7 @@ import { push } from 'react-router-redux'
 import { ROUTES } from '../constants/routes'
 import AuthButton from './AuthButton'
 import AppHeader from './AppHeader';
+import MobileMenu from './MobileMenu';
 
 const styles = theme => ({
   pageContainer: {
@@ -59,11 +60,13 @@ class Login extends Component {
     }
   }
   componentWillUnmount() {
-    const { dispatch } = this.props
+    const { dispatch, loginError } = this.props
 
-    dispatch({
-      type: AUTH.CLEAR_LOGIN_ERROR_MESSAGE
-    })
+    if (loginError) {
+      dispatch({
+        type: AUTH.CLEAR_LOGIN_ERROR_MESSAGE
+      })
+    }
   }
   handleCheckboxChange = () => {
     const { rememberMe } = this.state
@@ -220,6 +223,7 @@ class Login extends Component {
             </Grid>
           </Grid>
         </Grid>
+        <MobileMenu />
       </div>
     )
   }

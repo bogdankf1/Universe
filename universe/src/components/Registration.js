@@ -14,6 +14,7 @@ import { AUTH } from '../constants/ActionTypes'
 import { push } from 'react-router-redux'
 import { ROUTES } from '../constants/routes'
 import AppHeader from './AppHeader'
+import MobileMenu from './MobileMenu';
 
 const styles = theme => ({
   pageContainer: {
@@ -271,6 +272,7 @@ class Registration extends Component {
             </Grid>
           </Grid>
         </Grid>
+        <MobileMenu />
       </div>
     )
   }

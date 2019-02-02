@@ -20,7 +20,7 @@ class IPOInfoTab extends Component {
   render() {
     const { classes, isTodayIPOs, todayIPOs, upcomingIPOs } = this.props
     const { infoScheduleContainer } = classes
-
+    console.log("todayIPOs", todayIPOs)
     return (
       <Grid container justify={'center'} alignItems={'center'} direction={'column'}>
         <Grid item>

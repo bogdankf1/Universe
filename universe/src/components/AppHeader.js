@@ -11,7 +11,7 @@ import colorTheme from '../utils/colorTheme'
 import Grid from '@material-ui/core/Grid'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../constants/routes'
-import { AUTH } from '../constants/ActionTypes'
+import { AUTH, UI } from '../constants/ActionTypes'
 
 const styles = {
   headerContainer: {
@@ -87,6 +87,13 @@ class AppHeader extends Component {
 
     localStorage.removeItem('user')
   }
+  showMenu = () => {
+    const { dispatch } = this.props
+
+    dispatch({
+      type: UI.MOBILE_MENU_SHOW
+    })
+  }
   render() {
     const { classes, isLoggedIn, user } = this.props
     const {
@@ -131,18 +138,6 @@ class AppHeader extends Component {
             <Grid container justify={'flex-end'} alignItems={'center'} spacing={8}>
               <Grid item className={'auth-buttons-container'}>
                 {!isLoggedIn ?
-                  <Link className={linksItemContent} to={ROUTES.APP.LOGIN} > 
-                    <Button color="inherit" className={headerAuthBtn}>
-                      {textConstants.LOGIN}
-                    </Button>
-                  </Link> :
-                  <Typography variant="subheading" className={greetingMessage}>
-                    {`${textConstants.WELCOME}${user.username}!`}
-                  </Typography>
-                }
-              </Grid>
-              <Grid item className={'auth-buttons-container'}>
-                {!isLoggedIn ?
                   <Link className={linksItemContent} to={ROUTES.APP.REGISTER} > 
                     <Button color="inherit" className={headerAuthBtn}>
                       {textConstants.REGISTER}
@@ -153,8 +148,20 @@ class AppHeader extends Component {
                   </Button>
                 }
               </Grid>
-              <Grid item className={'menu-icon'}>
-                <i class="material-icons">menu</i>
+              <Grid item className={'auth-buttons-container'}>
+                {!isLoggedIn ?
+                  <Link className={linksItemContent} to={ROUTES.APP.LOGIN} > 
+                    <Button color="inherit" className={headerAuthBtn}>
+                      {textConstants.LOGIN}
+                    </Button>
+                  </Link> :
+                  <Typography variant="subheading" className={greetingMessage}>
+                    {`${textConstants.WELCOME}${user.username}!`}
+                  </Typography>
+                }
+              </Grid>
+              <Grid item className={'menu-icon'} onClick={this.showMenu}>
+                <i className="material-icons">menu</i>
               </Grid>
             </Grid>
           </Toolbar>

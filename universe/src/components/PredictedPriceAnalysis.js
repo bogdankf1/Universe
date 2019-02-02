@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Grid, Typography } from '@material-ui/core'
 import textConstants from '../constants/textConstants'
+import { CURRENCY_SIGN } from '../constants/app';
 
 const styles = (theme) => ({
 	button: {
@@ -49,10 +50,10 @@ class PredictedPriceAnalysis extends Component {
             <Grid item>
               {raisingDifference > 0 ?
                 <Typography variant="subheading" component="h3" className={greenRaisingTitle}>
-                  {`+${raisingDifference}`}
+                  {`+ ${CURRENCY_SIGN}${raisingDifference}`}
                 </Typography> :
                 <Typography variant="subheading" component="h3" className={redRaisingTitle}>
-                  {raisingDifference}
+                  {`- ${CURRENCY_SIGN}${Math.abs(raisingDifference)}`}
                 </Typography>
               }
             </Grid>

@@ -4,9 +4,6 @@
   cursor: pointer;
 }
 @media screen and (max-width: 950px) {
-  .page-header {
-
-  }
   .header-toolbar {
     padding-left: 40px !important;
     padding-right: 40px !important;
@@ -131,6 +128,7 @@
   width: 100%;
   height: calc(100% - 64px);
   position: relative;
+  z-index: 1;
 }
 .home-page-greeting-section {
   width: 100%;

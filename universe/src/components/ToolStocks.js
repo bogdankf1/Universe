@@ -13,16 +13,23 @@ import DefaultStocksLoading from './DefaultStocksLoading'
 import AutoCompleteInput from './AutoCompleteInput'
 import SymbolsLoading from './SymbolsLoading'
 import PredictPriceContainer from './PredictPriceContainer'
+import textConstants from '../constants/textConstants'
 
 const styles = theme => ({
   toolsStocksContainer: {
-    padding: '20px'
+    padding: 20
   },
   stocksChartContainer: {
     height: 300
   },
   companyNameTitle: {
     color: theme.palette.secondary.light
+  },
+  toolStocksHeading: {
+    color: theme.palette.secondary.light,
+    paddingLeft: 5,
+    paddingTop: 5,
+    paddingBottom: 5
   }
 })
 
@@ -48,16 +55,22 @@ class ToolStocks extends Component {
   }
   render() {
     const { companiesList, classes, selectedCompanyStocks, selectedCompany } = this.props
-    const { stocksChartContainer, toolsStocksContainer, companyNameTitle } = classes
+    const { stocksChartContainer, toolsStocksContainer, companyNameTitle, toolStocksHeading } = classes
 
     return (
       <div className={toolsStocksContainer}>
         <SymbolsLoading />
+        <Typography variant="headline" className={toolStocksHeading}>
+          {textConstants.SELECT_COMPANY}
+        </Typography>
         <AutoCompleteInput />
         {companiesList.length ? 
           <CompaniesCardsContainer /> :
           <DefaultStocksLoading />
         }
+        <Typography variant="headline" className={toolStocksHeading}>
+          {textConstants.SELECT_INTERVAL}
+        </Typography>
         <RangesContainer />
         <div className={stocksChartContainer}>
           <Typography className={companyNameTitle} variant="display1" component="h3">
