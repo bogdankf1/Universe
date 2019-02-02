@@ -11,20 +11,24 @@ const styles = theme => ({
 
   },
   scheduleHeadItem: {
-
+    width: 90,
+    textAlign: 'center'
+  },
+  scheduleHeadItemTitle: {
+    color: theme.palette.secondary.light
   }
 })
 
 class IPOScheduleHead extends Component {
   render() {
     const { classes } = this.props
-    const { scheduleHeadContainer, scheduleHeadItem } = classes
+    const { scheduleHeadContainer, scheduleHeadItem, scheduleHeadItemTitle } = classes
 
     return (
       <Grid container className={scheduleHeadContainer} justify={'space-between'} alignItems={'center'}>
         {IPO_SCHEDULE_FIELDS.map((item, idx) =>
           <Grid item className={scheduleHeadItem} key={idx}>
-            <Typography variant={'title'}>
+            <Typography variant={'title'} className={scheduleHeadItemTitle}>
               {textConstants[item]}
             </Typography>
           </Grid>

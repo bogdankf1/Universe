@@ -57,5 +57,9 @@ export default {
   INVALID_USERNAME_OR_PASSWORD: 'Invalid username or password!',
   WELCOME: 'Welcome, ',
   LOGOUT: 'Logout',
-  USERNAME_IS_ALREADY_USED: 'Username is already used'
+  USERNAME_IS_ALREADY_USED: 'Username is already used',
+  TRAINING_REPEATS: 'Training repeats',
+  SELECT_COMPANY: 'Select company:',
+  SELECT_INTERVAL: 'Select interval:',
+  MENU: 'Menu'
 }

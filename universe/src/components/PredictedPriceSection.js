@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Grid, Typography } from '@material-ui/core'
 import textConstants from '../constants/textConstants'
+import { CURRENCY_SIGN } from '../constants/app';
 
 const styles = (theme) => ({
   predictedPriceSection: {
@@ -25,7 +26,7 @@ class PredictedPriceSection extends Component {
         </Grid>
         <Grid item>
           <Typography variant="subheading" component="h3">
-            {predictedPrice}
+            {`${CURRENCY_SIGN} ${predictedPrice}`}
           </Typography>
         </Grid>
       </Grid>

@@ -5,13 +5,14 @@ import { withStyles } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
 import IPOIntervalSelection from './IPOIntervalSelection'
 import AppHeader from './AppHeader'
+import MobileMenu from './MobileMenu';
 
 const styles = theme => ({
   pageContainer: {
-    minHeight: '100vh'
+    minHeight: 'calc(100vh - 64px)'
   },
   ipoCalendar: {
-    height: 'calc(100vh - 64px)'
+    minHeight: 'calc(100vh - 64px)'
   },
   itemWrapper: {
     width: '100%'
@@ -25,13 +26,14 @@ class IPOCalendar extends Component {
     const { pageContainer, itemWrapper, ipoCalendar } = classes
 
     return (
-      <div className={`${pageContainer} default-page`}>
+      <div className={pageContainer}>
         <AppHeader />
         <Grid container className={ipoCalendar} alignItems={'center'} direction={'column'}>
           <Grid item className={itemWrapper}>
             <IPOIntervalSelection />
           </Grid>
         </Grid>
+        <MobileMenu />
       </div>
     )
   }

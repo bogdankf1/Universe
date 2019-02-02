@@ -5,10 +5,8 @@ import { withStyles } from '@material-ui/core/styles'
 import { Grid } from '../../node_modules/@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import textConstants from '../constants/textConstants'
-import AboutUsCard from './AboutUsCard'
-import AppFooter from './AppFooter'
-import AppHeader from './AppHeader';
-import MobileMenu from './MobileMenu';
+import AppHeader from './AppHeader'
+import MobileMenu from './MobileMenu'
 
 const styles = theme => ({
   mainTitleContainer: {
@@ -20,8 +18,7 @@ const styles = theme => ({
     zIndex: '10'
   },
   mainTitleText: {
-    textTransform: 'uppercase',
-    color: theme.palette.primary.darkText
+    textTransform: 'uppercase'
   },
   aboutSectionContainer: {
     width: '100%',
@@ -36,8 +33,7 @@ class HomePage extends Component {
     const {
       mainTitleContainer,
       mainTitle,
-      mainTitleText,
-      aboutSectionContainer
+      mainTitleText
     } = this.props.classes
      return (
       <div className="page default-page">

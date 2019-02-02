@@ -7,7 +7,8 @@ import { ROUTES } from '../constants/routes'
 import ToolStocks from './ToolStocks'
 import ComingSoon from './ComingSoon'
 import ToolCryptoCurrencies from './ToolCryptoCurrencies'
-import AppHeader from './AppHeader';
+import AppHeader from './AppHeader'
+import MobileMenu from './MobileMenu'
 
 const styles = {
   toolContainer: {
@@ -31,6 +32,7 @@ class Tool extends Component {
           <Route component={ComingSoon} path={ROUTES.TOOLS.COMMODITIES} />
           <Route component={ComingSoon} path={ROUTES.TOOLS.BASE_PATH} />
         </Switch>
+        <MobileMenu />
       </div>
      ) 
   }

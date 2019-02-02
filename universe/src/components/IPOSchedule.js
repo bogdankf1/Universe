@@ -5,11 +5,21 @@ import { withStyles } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
 import IPOScheduleHead from './IPOScheduleHead'
 import IPOScheduleBody from './IPOScheduleBody'
-import { IPO_SCHEDULE_FIELDS } from '../constants/app'
 
 const styles = theme => ({
   ipoScheduleHead: {
-    width: '100%'
+    width: '100%',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    borderBottomStyle: 'solid',
+    borderBottomWidth: 2,
+    borderBottomColor: theme.palette.secondary.main
+  },
+  ipoScheduleBody: {
+    width: '100%',
+    paddingTop: 10
   }
 })
 
@@ -21,23 +31,29 @@ class IPOSchedule extends Component {
       return []
     }
 
-    return ipoData.viewData.forEach(viewDataItem => {
-      return Object.keys(viewDataItem).filter(itemFieldName => {
-        return IPO_SCHEDULE_FIELDS.includes(itemFieldName.toUpperCase())
-      })
+    return ipoData.viewData.map(viewDataItem => {
+      return {
+        Company: viewDataItem.Company,
+        Symbol: viewDataItem.Symbol,
+        Market: viewDataItem.Market,
+        Price: viewDataItem.Price,
+        Amount: viewDataItem.Amount,
+        Expected: viewDataItem.Expected
+      }
     })
   }
   render() {
     const { classes } = this.props
-    const { ipoScheduleHead } = classes
+    const { ipoScheduleHead, ipoScheduleBody } = classes
     const scheduleBodyData = this.getRequiredIpoDataFields()
+    console.log("scheduleBodyData", scheduleBodyData)
 
     return (
       <Grid container justify={'center'} alignItems={'center'} direction={'column'}>
         <Grid item className={ipoScheduleHead}>
           <IPOScheduleHead />
         </Grid>
-        <Grid item>
+        <Grid item className={ipoScheduleBody}>
           <IPOScheduleBody ipoData={scheduleBodyData} />
         </Grid>
       </Grid>

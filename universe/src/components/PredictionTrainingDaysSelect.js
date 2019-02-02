@@ -51,7 +51,7 @@ class PredictionTrainingDaysSelect extends Component {
       	</Grid>
         <Grid item>
           <FormControl className={formControl}>
-            <InputLabel htmlFor="epochs-select">{textConstants.EPOCHS}</InputLabel>
+            <InputLabel htmlFor="epochs-select">{textConstants.TRAINING_REPEATS}</InputLabel>
             <Select
               value={epochs}
               onChange={this.handleEpochsChange}

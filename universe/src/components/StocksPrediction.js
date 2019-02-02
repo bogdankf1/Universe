@@ -7,11 +7,11 @@ import textConstants from '../constants/textConstants'
 import { push } from 'react-router-redux'
 import { ROUTES } from '../constants/routes'
 import AppHeader from './AppHeader'
+import MobileMenu from './MobileMenu';
 
 const styles = theme => ({
   button: {
     color: theme.palette.secondary.light,
-    marginRight: 20,
     background: theme.palette.primary.light
   },
   predictionContainer: {
@@ -23,10 +23,6 @@ class StocksPrediction extends Component {
   handleOpenClick = () => {
     const { dispatch } = this.props
     dispatch(push(ROUTES.TOOLS.BASE_PATH))
-  }
-  loadStocksSymbols = () => {
-    const { dispatch } = this.props
-    dispatch(push(ROUTES.SYMBOLS.STOCKS))
   }
   render() {
     const { classes } = this.props
@@ -47,6 +43,7 @@ class StocksPrediction extends Component {
             </Button>
           </Grid>
         </Grid>
+        <MobileMenu />
       </div>
      ) 
   }

@@ -5,7 +5,8 @@ import { withStyles } from '@material-ui/core/styles'
 import MarketNewsSection from './MarketNewsSection'
 import MarketNewsLoading from './MarketNewsLoading'
 import CompanyNewsSection from './CompanyNewsSection'
-import AppHeader from './AppHeader';
+import AppHeader from './AppHeader'
+import MobileMenu from './MobileMenu'
 
 const styles = theme => ({
   pageContainer: {
@@ -27,6 +28,7 @@ class News extends Component {
           <MarketNewsSection newsList={marketNewsList} /> : null
         }
         <CompanyNewsSection />
+        <MobileMenu />
       </div>
     )
   }

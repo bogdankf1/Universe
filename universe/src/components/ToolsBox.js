@@ -6,7 +6,8 @@ import { Grid } from '@material-ui/core'
 import textConstants from '../constants/textConstants'
 import ToolCard from './ToolCard'
 import { TOOLS_TYPES } from '../constants/app'
-import AppHeader from './AppHeader';
+import AppHeader from './AppHeader'
+import MobileMenu from './MobileMenu'
 
 const styles = {
   toolsWrapper: {
@@ -16,7 +17,7 @@ const styles = {
   toolsContainer: {
     width: '100%',
     height: 'calc(100vh - 64px)',
-    padding: '20px',
+    padding: 20,
     position: 'relative'
   }
 }
@@ -40,6 +41,7 @@ class ToolsBox extends Component {
             </Grid>
           )}
         </Grid>
+        <MobileMenu />
       </div>
      ) 
   }
