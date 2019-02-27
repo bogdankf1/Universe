@@ -14,7 +14,10 @@ const styles = theme => ({
     height: 70,
     flexGrow: 1,
     maxWidth: 600,
-    margin: '0 auto'
+    margin: '0 auto',
+    [theme.breakpoints.down("xs")]: {
+      height: 40
+    }
   },
   container: {
     position: 'relative'

@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { DEFAULT_STOCKS_RANGE } from '../constants/app'
-import { TOOLS } from '../constants/ActionTypes'
-import { Typography } from '@material-ui/core'
+import { TOOLS, UI } from '../constants/ActionTypes'
+import { Typography, Button, Grid } from '@material-ui/core'
 import StocksChartContainer from './StocksChartContainer'
 import CompanyStocksLoading from './CompanyStocksLoading'
 import RangesContainer from './RangesContainer'
@@ -12,24 +12,52 @@ import CompaniesCardsContainer from './CompaniesCardsContainer'
 import DefaultStocksLoading from './DefaultStocksLoading'
 import AutoCompleteInput from './AutoCompleteInput'
 import SymbolsLoading from './SymbolsLoading'
-import PredictPriceContainer from './PredictPriceContainer'
+import PredictionPopup from './PredictionPopup'
 import textConstants from '../constants/textConstants'
 
 const styles = theme => ({
   toolsStocksContainer: {
-    padding: 20
+    position: 'relative',
+    padding: 20,
+    paddingBottom: 50,
+    [theme.breakpoints.down("xs")]: {
+      padding: 10,
+      paddingBottom: 50
+		}
   },
   stocksChartContainer: {
-    height: 300
+    height: 300,
+    [theme.breakpoints.down("xs")]: {
+			paddingTop: 15
+		}
   },
   companyNameTitle: {
-    color: theme.palette.secondary.light
+    color: theme.palette.secondary.light,
+    [theme.breakpoints.down("xs")]: {
+			fontSize: '1.5rem'
+		}
   },
   toolStocksHeading: {
     color: theme.palette.secondary.light,
     paddingLeft: 5,
     paddingTop: 5,
-    paddingBottom: 5
+    paddingBottom: 5,
+    [theme.breakpoints.down("xs")]: {
+      fontSize: '1rem',
+      paddingTop: 15
+    }
+  },
+  predictionButtonContainer: {
+    marginTop: 12
+  },
+  predictionButton: {
+    backgroundColor: '#4caf50',
+    '&:hover': {
+      backgroundColor: '#81c784'
+    }
+  },
+  predictionButtonText: {
+    color: theme.palette.secondary.light
   }
 })
 
@@ -53,9 +81,24 @@ class ToolStocks extends Component {
       })
     }
   }
+  handlePredictionButtonClick = () => {
+    const { dispatch } = this.props
+
+    dispatch({
+      type: UI.PREDICTION_POPUP_SHOW
+    })
+  }
   render() {
     const { companiesList, classes, selectedCompanyStocks, selectedCompany } = this.props
-    const { stocksChartContainer, toolsStocksContainer, companyNameTitle, toolStocksHeading } = classes
+    const {
+      stocksChartContainer,
+      toolsStocksContainer,
+      companyNameTitle,
+      toolStocksHeading,
+      predictionButtonContainer,
+      predictionButton,
+      predictionButtonText
+    } = classes
 
     return (
       <div className={toolsStocksContainer}>
@@ -72,6 +115,21 @@ class ToolStocks extends Component {
           {textConstants.SELECT_INTERVAL}
         </Typography>
         <RangesContainer />
+        {selectedCompanyStocks.length ?
+          <Grid container justify={'center'} alignItems={'center'} className={predictionButtonContainer}>
+            <Grid item>
+              <Button
+                className={predictionButton}
+                variant="contained"
+                onClick={this.handlePredictionButtonClick}
+              >
+                <Typography variant="button" className={predictionButtonText}>
+                  {textConstants.PREDICT_STOCKS_PRICE}
+                </Typography>
+              </Button>
+            </Grid>
+          </Grid> : null
+        }
         <div className={stocksChartContainer}>
           <Typography className={companyNameTitle} variant="display1" component="h3">
             {selectedCompany.companyName}
@@ -81,9 +139,7 @@ class ToolStocks extends Component {
             <StocksChartContainer /> : null
           }
         </div>
-        {selectedCompanyStocks.length ?
-          <PredictPriceContainer /> : null
-        }
+        <PredictionPopup />
       </div>
      ) 
   }

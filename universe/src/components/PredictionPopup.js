@@ -8,7 +8,7 @@ import * as tf from '@tensorflow/tfjs'
 import Preloader from './Preloader'
 import { PREDICTION_TRAINING_DAYS, EPOCHS_AMOUNTS } from '../constants/app'
 import PredictionTrainingDaysSelect from './PredictionTrainingDaysSelect'
-import { PREDICTION } from '../constants/ActionTypes'
+import { PREDICTION, UI } from '../constants/ActionTypes'
 import PredictedPriceSection from './PredictedPriceSection'
 import PredictedPriceAnalysis from './PredictedPriceAnalysis'
 
@@ -17,28 +17,67 @@ const styles = (theme) => ({
 		color: theme.palette.secondary.light,
 		backgroundColor: theme.palette.primary.main,
 	},
-	mainContainer: {
+	predictionPopupWrapper: {
+		position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+		zIndex: 15,
+		background: theme.palette.primary.darkText,
+		padding: '0 10px'
+	},
+	predictionPopupDimmer: {
+		position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%'
+	},
+	predictionPopupInner: {
 		maxWidth: 500,
-    margin: '120px auto 0',
 		borderRadius: 30,
 		background: theme.palette.secondary.main,
-    minHeight: 150,
+		minHeight: 150,
+		height: 420,
     paddingTop: 10,
-    paddingBottom: 10
+		paddingBottom: 10,
+		position: 'absolute',
+		bottom: 100,
+		width: 'calc(100% - 20px)',
+		left: '50%',
+    top: '50%',
+    transform: `translate(-50%,-50%)`
 	},
 	heading: {
 		marginBottom: 10
   },
   predictionSettingsItem: {
     marginTop: 20
+	},
+	closeIcon: {
+		position: 'absolute',
+		top: 10,
+		right: 10,
+		width: 24,
+		height: 24
+	},
+  saveButton: {
+		backgroundColor: '#4caf50',
+		marginTop: 10,
+    '&:hover': {
+      backgroundColor: '#81c784'
+    }
+  },
+  saveButtonText: {
+    color: theme.palette.secondary.light
   }
 })
 
-class PredictPriceContainer extends Component {
+class PredictionPopup extends Component {
 	constructor(...opts) {
 		super(...opts)
 		this.state = {
-			isSettingsButtonClicked: false,
 			showPreloader: false
 		}
 		this.model = tf.sequential()
@@ -57,8 +96,23 @@ class PredictPriceContainer extends Component {
 			payload: EPOCHS_AMOUNTS[0]
 		})
 	}
-	handleSelectSettingsButton = () => {
-		this.showPredictionMenu()
+	componentWillUnmount() {
+		const { dispatch, isVisible } = this.props
+
+		dispatch({
+			type: PREDICTION.CLEAR_PREDICTION_SETTINGS
+		})
+
+		if (isVisible) {
+			this.closePopup()
+		}
+	}
+	closePopup = () => {
+		const { dispatch } = this.props
+
+		dispatch({
+			type: UI.PREDICTION_POPUP_HIDE
+		})
 	}
 	handlePredictButtonClick = () => {
 		this.setState({
@@ -73,11 +127,6 @@ class PredictPriceContainer extends Component {
     }
 
 		this.makePrediction(predictionDate)
-	}
-	showPredictionMenu = () => {
-		this.setState({
-			isSettingsButtonClicked: true
-		}) 
 	}
 	getPredictionDate = () => {
 		const currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
@@ -160,75 +209,96 @@ class PredictPriceContainer extends Component {
     
     this.tfinterface = null
 	}
-  render() {
-		const { classes, predictedPrice } = this.props
-		const { button, mainContainer, heading, predictionSettingsItem } = classes
-		const { isSettingsButtonClicked, showPreloader } = this.state
+	savePrediction = () => {
+		const { dispatch } = this.props
 
-    return (
-			<div className={mainContainer}>
-				<Grid container justify={'center'} alignItems={'center'} className={heading}>
-					<Grid item>
-						<Typography variant="headline" component="h3">
-							{textConstants.STOCKS_PRICE_PREDICTION}
-						</Typography>
-					</Grid>
-				</Grid>
-				<Grid container justify={'center'} alignItems={'center'} spacing={16}>
-					<Grid item>
-						<Button
-							variant="outlined"
-							color={"primary"}
-							className={`${button} primary-stock-button`}
-							onClick={this.handleSelectSettingsButton}
-						>
-							{textConstants.SELECT_PREDICTION_SETTINGS}
-						</Button>
-					</Grid>
-				</Grid>
-        {isSettingsButtonClicked &&
-          <Grid container justify={'center'} alignItems={'center'} direction={'column'}>
-            <Grid item className={predictionSettingsItem}>
-              <PredictionTrainingDaysSelect
-                handleTrainingDaysSelect={this.handleTrainingDaysSelect}
-                handleEpochsSelect={this.handleEpochsSelect}
-              />
-            </Grid>
-            <Grid item className={predictionSettingsItem}>
-              <Button
-                variant="outlined"
-                color={"primary"}
-                className={`${button} primary-stock-button`}
-                onClick={this.handlePredictButtonClick}
-              >
-                {textConstants.PREDICT_STOCKS_PRICE}
-              </Button>
-            </Grid>
-          </Grid>
-				}
-				{showPreloader &&
-					<Grid container justify={'center'} alignItems={'center'} spacing={16}>
+		dispatch({
+			type: PREDICTION.SAVE_PREDICTION
+		})
+		this.closePopup()
+	}
+  render() {
+		const { classes, predictedPrice, isVisible } = this.props
+		const {
+			button,
+			predictionPopupWrapper,
+			predictionPopupDimmer,
+			predictionPopupInner,
+			heading,
+			predictionSettingsItem,
+			closeIcon,
+			saveButton,
+			saveButtonText
+		} = classes
+		const { showPreloader } = this.state
+
+		return ( isVisible ?
+			<div className={predictionPopupWrapper}>
+				<div className={predictionPopupDimmer} />
+				<div className={predictionPopupInner}>
+					<div className={closeIcon} onClick={this.closePopup}>
+						<i className="material-icons">close</i>
+					</div>
+					<Grid container justify={'center'} alignItems={'center'} className={heading}>
 						<Grid item>
-							<Preloader />
+							<Typography variant="headline" component="h3">
+								{textConstants.STOCKS_PRICE_PREDICTION}
+							</Typography>
 						</Grid>
 					</Grid>
-				}
-				{predictedPrice ?
 					<Grid container justify={'center'} alignItems={'center'} direction={'column'}>
-						<Grid item>
-							<PredictedPriceSection />
+						<Grid item className={predictionSettingsItem}>
+							<PredictionTrainingDaysSelect
+								handleTrainingDaysSelect={this.handleTrainingDaysSelect}
+								handleEpochsSelect={this.handleEpochsSelect}
+							/>
 						</Grid>
 						<Grid item className={predictionSettingsItem}>
-							<PredictedPriceAnalysis />
+							<Button
+								variant="outlined"
+								color={"primary"}
+								className={`${button} primary-stock-button`}
+								onClick={this.handlePredictButtonClick}
+							>
+								{textConstants.GET_PREDICTION}
+							</Button>
 						</Grid>
-					</Grid> : null
-				}
-			</div>
+					</Grid>
+					{showPreloader &&
+						<Grid container justify={'center'} alignItems={'center'} spacing={16}>
+							<Grid item>
+								<Preloader />
+							</Grid>
+						</Grid>
+					}
+					{predictedPrice ?
+						<Grid container justify={'center'} alignItems={'center'} direction={'column'}>
+							<Grid item>
+								<PredictedPriceSection />
+							</Grid>
+							<Grid item className={predictionSettingsItem}>
+								<PredictedPriceAnalysis />
+							</Grid>
+							<Grid item>
+								<Button
+									className={saveButton}
+									variant="contained"
+									onClick={this.savePrediction}
+								>
+									<Typography variant="button" className={saveButtonText}>
+										{textConstants.SAVE_PREDICTION}
+									</Typography>
+								</Button>
+							</Grid>
+						</Grid> : null
+					}
+				</div>
+			</div> : null
      ) 
   }
 }
 
-PredictPriceContainer.propTypes = {
+PredictionPopup.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
@@ -238,6 +308,7 @@ export default withStyles(styles)(connect(
 		selectedCompanyStocks: state.tools.selectedCompanyStocks || [],
 		trainingDays: state.prediction.trainingDays,
 		epochs: state.prediction.epochs,
-		predictedPrice: state.prediction.predictedPrice
+		predictedPrice: state.prediction.predictedPrice,
+		isVisible: state.ui.predictionPopup.visible
   })
-)(PredictPriceContainer))
+)(PredictionPopup))

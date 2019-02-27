@@ -104,7 +104,7 @@ class Login extends Component {
 
     localStorage.setItem('user', user)
 
-    dispatch(push(ROUTES.TOOLS.BASE_PATH))
+    dispatch(push(ROUTES.TOOLS.STOCKS))
   }
   setLoginErrorMessage = () => {
     const { dispatch } = this.props

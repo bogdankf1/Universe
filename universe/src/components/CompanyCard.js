@@ -16,10 +16,17 @@ const styles = theme => ({
     alignItems: 'center',
     cursor: 'pointer',
     background: theme.palette.primary.light,
-    userSelect: 'none'
+    userSelect: 'none',
+    [theme.breakpoints.down("xs")]: {
+      minWidth: 70,
+      minHeight: 28,
+    }
   },
   companyCardText: {
-    color: theme.palette.secondary.light
+    color: theme.palette.secondary.light,
+    [theme.breakpoints.down("xs")]: {
+      fontSize: '0.7rem'
+    }
   }
 })
 

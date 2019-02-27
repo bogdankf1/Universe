@@ -96,7 +96,7 @@ class Registration extends Component {
   handleSuccessfulRegistration = (user) => {
     const { dispatch } = this.props
 
-    dispatch(push(ROUTES.TOOLS.BASE_PATH))
+    dispatch(push(ROUTES.TOOLS.STOCKS))
   }
   setRegisterErrorMessage = () => {
     const { dispatch } = this.props

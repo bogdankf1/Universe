@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import HomePage from './HomePage'
 import { ROUTES } from './../constants/routes'
 import { Route, Switch } from 'react-router-dom'
-import StocksPrediction from './StocksPrediction'
 import ToolsContainer from './ToolsContainer'
 import SymbolsContainer from './SymbolsContainer'
 import Registration from './Registration'
@@ -36,7 +35,7 @@ class App extends Component {
           <Route component={HomePage} path={ROUTES.APP.HOME} />
           <Route component={ToolsContainer} path={ROUTES.TOOLS.BASE_PATH} />
           <Route component={SymbolsContainer} path={ROUTES.SYMBOLS.STOCKS} />
-          <Route component={StocksPrediction} />
+          <Route component={HomePage} />
         </Switch>
       </div>
     )
