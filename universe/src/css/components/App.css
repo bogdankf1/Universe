@@ -114,6 +114,8 @@
   background: url('../../public/images/home-page-bg.jpg');
   background-size: 100% 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .default-page::before {
   content: "";
@@ -126,7 +128,7 @@
 }
 .home-page-container {
   width: 100%;
-  height: calc(100% - 64px);
+  flex: 1;
   position: relative;
   z-index: 1;
 }

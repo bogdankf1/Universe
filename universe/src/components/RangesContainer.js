@@ -6,14 +6,21 @@ import { TOOLS } from '../constants/ActionTypes'
 import { STOCKS_RANGES } from '../constants/app'
 import { Chip, Grid } from '@material-ui/core'
 
-const styles = {
+const styles = theme => ({
 	rangesContainer: {
-		margin: '10px 0px'
+		margin: '10px 0',
+		[theme.breakpoints.down("xs")]: {
+			margin: '0 0 5px'
+		}
 	},
   chip: {
-    margin: 5
+		margin: 5,
+		[theme.breakpoints.down("xs")]: {
+			height: 20,
+			margin: 2
+		}
   }
-}
+})
 
 class RangesContainer extends Component {
 	saveCurrentRange = (range) => {
@@ -30,17 +37,16 @@ class RangesContainer extends Component {
 
     return (
 			<Grid container justify={'center'} alignItems={'center'} className={rangesContainer}>
-				<Grid item>
-					{STOCKS_RANGES.map((range, idx) =>
+				{STOCKS_RANGES.reverse().map((range, idx) =>
+					<Grid item key={idx}>
 						<Chip
 							label={range}
 							className={chip}
 							variant="outlined"
 							onClick={() => this.saveCurrentRange(range)}
-							key={idx}
 						/>
-					)}
-      	</Grid>
+					</Grid>
+				)}
 			</Grid>
      ) 
   }

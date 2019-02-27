@@ -61,5 +61,7 @@ export default {
   TRAINING_REPEATS: 'Training repeats',
   SELECT_COMPANY: 'Select company:',
   SELECT_INTERVAL: 'Select interval:',
-  MENU: 'Menu'
+  MENU: 'Menu',
+  GET_PREDICTION: 'Get prediction',
+  SAVE_PREDICTION: 'Save prediction'
 }

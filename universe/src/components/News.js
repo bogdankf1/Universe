@@ -7,10 +7,17 @@ import MarketNewsLoading from './MarketNewsLoading'
 import CompanyNewsSection from './CompanyNewsSection'
 import AppHeader from './AppHeader'
 import MobileMenu from './MobileMenu'
+import { Grid } from '@material-ui/core'
 
 const styles = theme => ({
   pageContainer: {
     minHeight: '100vh'
+  },
+  newsSectionsContainer: {
+    padding: 10
+  },
+  newsSectionItem: {
+
   }
 })
 
@@ -18,16 +25,24 @@ const styles = theme => ({
 class News extends Component {
   render() {
     const { classes, marketNewsList } = this.props
-    const { pageContainer } = classes
+    const { pageContainer, newsSectionsContainer } = classes
 
     return (
       <div className={pageContainer}>
         <AppHeader />
-        <MarketNewsLoading />
-        {marketNewsList.length ?
-          <MarketNewsSection newsList={marketNewsList} /> : null
-        }
-        <CompanyNewsSection />
+        <Grid container className={newsSectionsContainer} justify={'center'} alignItems={'center'} direction={'column'}>
+          <Grid item>
+            <MarketNewsLoading />
+          </Grid>
+          <Grid item>
+            {marketNewsList.length ?
+              <MarketNewsSection newsList={marketNewsList} /> : null
+            }
+          </Grid>
+          <Grid item>
+            <CompanyNewsSection />   
+          </Grid>
+        </Grid>
         <MobileMenu />
       </div>
     )

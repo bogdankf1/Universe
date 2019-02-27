@@ -34,7 +34,7 @@ export const IPO_SCHEDULE_FIELDS = ['COMPANY', 'SYMBOL', 'MARKET', 'PRICE', 'AMO
 export const MOBILE_MENU_ITEMS = [
   {
     title: textConstants.STOCK_MARKET,
-    route: ROUTES.APP.BASE_PATH
+    route: ROUTES.TOOLS.STOCKS
   },
   {
     title: textConstants.NEWS,

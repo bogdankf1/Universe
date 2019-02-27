@@ -14,6 +14,8 @@ export default function prediction(state = initialState, action) {
       return {...state, epochs: action.payload}
     case PREDICTION.SAVE_PREDICTED_PRICE:
       return {...state, predictedPrice: action.payload}
+    case PREDICTION.CLEAR_PREDICTION_SETTINGS:
+      return {...initialState}
     default:
       return state
   }

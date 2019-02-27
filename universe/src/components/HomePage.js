@@ -18,7 +18,16 @@ const styles = theme => ({
     zIndex: '10'
   },
   mainTitleText: {
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    [theme.breakpoints.down("xs")]: {
+      fontSize: '2rem',
+      marginBottom: 50
+    }
+  },
+  subTitleText: {
+    [theme.breakpoints.down("xs")]: {
+      fontSize: '1.3rem'
+    }
   },
   aboutSectionContainer: {
     width: '100%',
@@ -33,7 +42,8 @@ class HomePage extends Component {
     const {
       mainTitleContainer,
       mainTitle,
-      mainTitleText
+      mainTitleText,
+      subTitleText
     } = this.props.classes
      return (
       <div className="page default-page">
@@ -45,32 +55,12 @@ class HomePage extends Component {
                 <Typography variant="display3" gutterBottom className={mainTitleText}>
                   {textConstants.UNIVERSE_PROJECT}
                 </Typography>
-                <Typography variant="display1" gutterBottom>
+                <Typography variant="display1" gutterBottom className={subTitleText}>
                   {textConstants.PREDICT_PRICE_ON_STOCKS}
                 </Typography>
               </Grid>
             </Grid>
           </div>
-          {/* <div className="home-page-about-section">
-            <Grid container className={aboutSectionContainer} justify={"center"} alignItems={"center"} spacing={32}>
-              <Grid item>
-                <AboutUsCard />
-              </Grid>
-              <Grid item>
-                <AboutUsCard />
-              </Grid>
-              <Grid item>
-                <AboutUsCard />
-              </Grid>
-            </Grid>
-          </div>
-          <div className="home-page-products-section">
-
-          </div>
-          <div className="home-page-contact-us-section">
-
-          </div>
-          <AppFooter /> */}
         </div>
         <MobileMenu />
       </div>

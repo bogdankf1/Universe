@@ -115,6 +115,7 @@ MobileMenu.propTypes = {
 
 export default withStyles(styles)(connect(
   state => ({
-    isVisible: state.ui.mobileMenu.visible
+    isVisible: state.ui.mobileMenu.visible,
+    isLoggedIn: state.auth.isLoggedIn
   })
 )(MobileMenu))
